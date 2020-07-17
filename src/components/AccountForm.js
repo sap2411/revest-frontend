@@ -13,6 +13,7 @@ class AccountForm extends Component {
             age: !!this.props.user.id ? this.props.user.attributes.age : '',
             income: !!this.props.user.id ? this.props.user.attributes.income : '',
             fetchMessages: '',
+            passwordC: '',
             redirect: null
         }
     } 
@@ -55,6 +56,10 @@ class AccountForm extends Component {
         }  
     }
 
+    match = () => {
+        return this.state.password === this.state.passwordC
+    }
+
     render () {
         // Redirect function used after form submit
         if (this.state.redirect) {
@@ -85,12 +90,22 @@ class AccountForm extends Component {
                     <div className="form-group col-sm">
                         <input type="password" className="form-control" placeholder="Password" name="password" value={this.state.password} onChange={event => this.handleChange(event)}/>
                     </div>
+                    <div className="form-group col-sm">
+                        <input type="password" className="form-control" placeholder="Password Confirmation" name="passwordC" value={this.state.passwordC} onChange={event => this.handleChange(event)}/>
+                    </div>
 
                     <div className="form-group col-sm">
+                    {this.state.password === this.state.passwordC && !!this.state.password ? 
                         <button type="submit" className="btn btn-block btn-success p">
                             {!!this.props.user.id ? <i className="fas fa-user-edit"></i> : <i className="fas fa-user-plus"></i>}
                             <span className="d-none d-sm-none d-md-inline"> {!!this.props.user.id ? 'Edit' : 'Create'} Account</span>
-                        </button>
+                        </button> 
+                        :
+                        <button type="submit" disabled className="btn btn-block btn-success p">
+                            {!!this.props.user.id ? <i className="fas fa-user-edit"></i> : <i className="fas fa-user-plus"></i>}
+                            <span className="d-none d-sm-none d-md-inline"> {!!this.props.user.id ? 'Edit' : 'Create'} Account</span>
+                        </button> 
+                    }   
                     </div>
         
                     {/* Conditionally render via && operator acting as if statement */}
