@@ -21,7 +21,7 @@ class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     api.auth.login({user: this.state.fields}).then(res => {
-      if (!res.error) {
+      if (!res.message) {
         localStorage.setItem("token", res.jwt);
         this.props.onLogin(res.user.data.attributes);
         this.props.history.push('/');
@@ -35,31 +35,36 @@ class Login extends React.Component {
     const { fields } = this.state;
     return (
       <div>
-        {this.state.error ? <h1>Try again...</h1> : null}
-        <div className="ui form">
-          <form onSubmit={this.handleSubmit}>
-            <div className="ui field">
-              <label>email</label>
+        <div className="card col-3 my-5 mx-auto px-0 rounded-lg text-center">
+          <form className="card-body" onSubmit={this.handleSubmit}>
+            <div className="form-group col-sm">
+            <h2>Log In</h2>
+            </div>
+            <div className="form-group col-sm">
               <input
                 name="email"
-                placeholder="email"
+                placeholder="Email"
                 value={fields.email}
                 onChange={this.handleChange}
               />
             </div>
-            <div className="ui field">
-              <label>Password</label>
+            <div className="form-group col-sm">
               <input
                 name="password"
                 type="password"
-                placeholder="password"
+                placeholder="Password"
                 value={fields.password}
                 onChange={this.handleChange}
               />
             </div>
-            <button type="submit" className="ui basic blue button">
-              Login
+            <div className="form-group col-sm" >
+            <button type="submit" className="btn btn-block btn-success p">
+              Submit
             </button>
+            </div>
+            <div className="form-group col-sm" >
+            {this.state.error ? <h2>Invalid Credentials</h2> : null}
+            </div>
           </form>
         </div>
       </div>
