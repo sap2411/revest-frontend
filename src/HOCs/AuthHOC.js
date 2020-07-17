@@ -16,15 +16,18 @@ const AuthHOC = WrappedComponent => {
     checkLogin = () => {
       console.log("checking login");
       if (!localStorage.getItem("token")) {
+        console.log("no token")
         this.props.history.push("/login")
       } else {
         api.auth.getCurrentUser().then((resp) => {
           if (resp.error) {
+            console.log("resp error")
             this.props.history.push("/login")
           } else {
+            console.log("authorized")
             this.setState({
               authorized: true
-            });
+            })
           }
         });
       }

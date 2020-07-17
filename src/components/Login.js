@@ -24,7 +24,7 @@ class Login extends React.Component {
       if (!res.message) {
         localStorage.setItem("token", res.jwt);
         this.props.onLogin(res.user.data.attributes);
-        this.props.history.push('/');
+        this.props.history.push('/home');
       } else {
         this.setState({ error: true });
       }

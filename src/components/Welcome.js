@@ -8,8 +8,7 @@ const About = (props) => {
             <h1 className="display-4">Welcome to Revest </h1>
             <p className="lead">The best place to check your spending and realize your financial potential!</p>
             <hr className="my-4"/>
-            {!!props.user.id ? null : 
-            (<div><Link exact to="/create-account" title="Create Account">
+                <div><Link exact to="/create-account" title="Create Account">
                 <button className="btn btn-primary btn-lg mx-4" type="button">
                     <i className="fas fa-user-plus"></i>
                     <span className="d-none d-sm-none d-md-inline"> Create Account</span>
@@ -20,8 +19,7 @@ const About = (props) => {
                     <i className="fas fa-user-plus"></i>
                     <span className="d-none d-sm-none d-md-inline"> Log In</span>
                 </button>
-            </Link></div>)
-            }
+            </Link></div>
         </div>
     )
 }

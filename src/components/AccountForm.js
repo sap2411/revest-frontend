@@ -49,7 +49,7 @@ class AccountForm extends Component {
             this.setState({fetchMessages: response.errors})
          } else{
             // Redirect via state update
-            this.setState({redirect: '/'})
+            this.setState({redirect: '/home'})
             // Fake log in user
             localStorage.setItem("token", response.jwt)
             this.props.loggedIn(response.user.data.attributes)

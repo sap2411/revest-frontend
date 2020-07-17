@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AccountForm from './components/AccountForm.js';
 import Navbar from './components/Navbar.js';
-import About from './components/About.js';
+import About from './components/Welcome.js';
+import Home from './components/Home.js';
 import Login from './components/Login.js';
 import { api } from "./services/api";
+import Plaid from './components/Plaid.js'
+
 import './App.css';
 
 class App extends Component {
@@ -76,11 +79,13 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+    <Router>
       <div>
         <Navbar user={this.state.auth.user} handleLogOut={this.logout} />
         <Route exact path="/" component={() => <About user={this.state.auth.user} />} />
+        <Route exact path="/plaid" component={() => <Plaid user={this.state.auth.user} />} />
         <Route exact path="/login" render={props => <Login {...props}  onLogin={this.login} />} />
+        <Route exact path="/Home" render={props => <Home {...props}  user={this.state.auth.user} />} />
         <Route exact path="/create-account" component={() => <AccountForm user={this.state.auth.user} loggedIn={this.login} />} />
         {/* <Route exact path="/edit-account" component={() => <AccountForm  user={this.state.user} />} /> */}
       </div>
