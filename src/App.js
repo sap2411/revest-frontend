@@ -3,15 +3,39 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AccountForm from './components/AccountForm.js';
 import Navbar from './components/Navbar.js';
 import About from './components/About.js';
+import Login from './components/Login.js';
+import { api } from "./services/api";
 import './App.css';
 
-const URL = 'http://localhost:3001/'
 class App extends Component {
 
   constructor(props){
     super(props)
     this.state={
-      user: null
+      auth: {
+      user: {}
+    }
+    }
+  }
+
+  login = data => {
+    const updatedState = { ...this.state.auth, user: {id: data.id,  first_name: data.first_name} };
+    this.setState({ auth: updatedState });
+  };
+
+  logout = () => {
+    localStorage.removeItem("token");
+    this.setState({ auth: { user: {} } });
+  };
+
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      api.auth.getCurrentUser().then(user => {
+        console.log(user)
+        const updatedState = { ...this.state.auth, user: user.user.data.attributes };
+        this.setState({ auth: updatedState });
+      });
     }
   }
 
@@ -41,21 +65,23 @@ class App extends Component {
   //   this.testFetch()
   // }
 
-  loggedIn = (userData) => {
-    this.setState({
-      user: {...userData}
-    })
-  }
+  // loggedIn = (userData) => {
+  //   this.setState({
+  //       auth: {
+  //         user: {...userData}
+  //       }
+  //   })
+  // }
 
 
   render() {
     return (
       <Router>
       <div>
-        <Navbar user={this.state.user}/>
+        <Navbar user={this.state.auth.user} handleLogOut={this.logout} />
         <Route exact path="/" component={() => <About  />} />
-        {/* <Route exact path="/log-in" component={() => <LogInForm user={this.state.user} />} /> */} */}
-        <Route exact path="/create-account" component={() => <AccountForm user={this.user} loggedIn={this.loggedIn} />} />
+        <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />} />
+        <Route exact path="/create-account" component={() => <AccountForm user={this.state.auth.user} loggedIn={this.login} />} />
         {/* <Route exact path="/edit-account" component={() => <AccountForm  user={this.state.user} />} /> */}
       </div>
     </Router>

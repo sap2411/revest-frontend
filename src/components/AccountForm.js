@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import { Redirect } from "react-router-dom";
+import { api } from '../services/api';
 
 class AccountForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            first_name: this.props.user ? this.props.user.attributes.first_name : '',
-            last_name: this.props.user ? this.props.user.attributes.last_name : '',
-            email: this.props.user ? this.props.user.attributes.email : '',
+            first_name: !!this.props.user.id ? this.props.user.attributes.first_name : '',
+            last_name: !!this.props.user.id ? this.props.user.attributes.last_name : '',
+            email: !!this.props.user.id ? this.props.user.attributes.email : '',
             password: '',
-            age: this.props.user ? this.props.user.attributes.age : '',
-            income: this.props.user ? this.props.user.attributes.income : '',
+            age: !!this.props.user.id ? this.props.user.attributes.age : '',
+            income: !!this.props.user.id ? this.props.user.attributes.income : '',
             fetchMessages: '',
             redirect: null
         }
@@ -18,7 +19,9 @@ class AccountForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        this.createNewUser(this.state)
+        api.auth.createNewUser(this.state)
+        .then(this.handleFetchResponse)
+        // this.createNewUser(this.state)
     }
     
     handleChange = event => {
@@ -27,21 +30,18 @@ class AccountForm extends Component {
         })
     }
 
-    createNewUser = userData => {
-        const options = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({user: userData})
-        }
-        fetch('http://localhost:3001/api/v1/users', options)
-        .then(resp => resp.json())
-        .then(this.handleFetchResponse)
-    }
+    // createNewUser = userData => {
+    //     const options = {
+    //         method: 'POST',
+    //         headers: {'Content-Type': 'application/json'},
+    //         body: JSON.stringify({user: userData})
+    //     }
+    //     fetch('http://localhost:3001/api/v1/users', options)
+    //     .then(resp => resp.json())
+    //     .then(this.handleFetchResponse)
+    // }
 
     handleFetchResponse = response => {
-        this.setState({
-            password: ''
-        })
         console.log(response)
         if (response.errors) {
             // Set error messages
@@ -51,7 +51,7 @@ class AccountForm extends Component {
             this.setState({redirect: '/'})
             // Fake log in user
             localStorage.setItem("token", response.jwt)
-            this.props.loggedIn(response.user.data)
+            this.props.loggedIn(response.user.data.attributes)
         }  
     }
 
@@ -65,7 +65,7 @@ class AccountForm extends Component {
             <div className="card col-3 my-5 mx-auto px-0 rounded-lg text-center">
                 <form className="card-body" onSubmit={event => this.handleSubmit(event)}>
                     <div className="form-group col-sm">
-                        <h3>{this.props.user ? 'Edit' : 'Create'} Account</h3>
+                        <h3>{!!this.props.user.id ? 'Edit' : 'Create'} Account</h3>
                     </div>
                     <div className="form-group col-sm">
                         <input type="text" className="form-control" placeholder="First Name" name="first_name" value={this.state.first_name} onChange={event => this.handleChange(event)}/>
@@ -88,8 +88,8 @@ class AccountForm extends Component {
 
                     <div className="form-group col-sm">
                         <button type="submit" className="btn btn-block btn-success p">
-                            {this.props.user ? <i className="fas fa-user-edit"></i> : <i className="fas fa-user-plus"></i>}
-                            <span className="d-none d-sm-none d-md-inline"> {this.props.user ? 'Edit' : 'Create'} Account</span>
+                            {!!this.props.user.id ? <i className="fas fa-user-edit"></i> : <i className="fas fa-user-plus"></i>}
+                            <span className="d-none d-sm-none d-md-inline"> {!!this.props.user.id ? 'Edit' : 'Create'} Account</span>
                         </button>
                     </div>
         
