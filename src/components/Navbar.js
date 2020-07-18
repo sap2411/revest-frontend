@@ -5,9 +5,16 @@ const Navbar = ({ user, handleLogOut }) => {
     return (
         <header className="navbar navbar-expand navbar-dark green bg-primary shadow flex-column flex-md-row bd-navbar">
             <nav className="collapse navbar-collapse" >
+            { !user.id ? 
                 <NavLink exact to="/" className="navbar-brand" title="Revest">
                     <span className="d-none d-sm-none d-md-inline p"> Revest </span>
                 </NavLink>
+                :
+                <NavLink exact to="/home" className="navbar-brand" title="Revest">
+                    <span className="d-none d-sm-none d-md-inline p"> Revest </span>
+                </NavLink>
+            }
+
 
                 <ul className="navbar-nav ml-md-auto">
                     {/* Conditionally render based on user prop*/}
