@@ -40,6 +40,14 @@ const createNewUser = userData => {
     });
 }
 
+const plaidAuth = userData => {
+  return fetch(`${API_ROOT}/plaidlogin`, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify(userData)
+  }).then(res => res.json());
+}
+
 // const onPlaidSuccess
 
 
@@ -47,6 +55,7 @@ export const api = {
     auth: {
       login,
       getCurrentUser,
-      createNewUser
+      createNewUser,
+      plaidAuth
     },
 };
