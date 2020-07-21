@@ -29,6 +29,7 @@ class App extends Component {
 
   logout = () => {
     localStorage.removeItem("token");
+    localStorage.clear()
     this.setState({ auth: { user: {} } });
   };
 
@@ -42,40 +43,6 @@ class App extends Component {
       });
     }
   }
-
-  // testFetch = () => {
-  //   fetch('http://localhost:3001/api/v1/auth', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Accept: 'application/json'      
-  //     },
-  //     body: JSON.stringify({
-  //       user: {
-  //         first_name: "sylvieawoeods",
-  //         last_name: "brob",
-  //         income: 440.0,
-  //         email: 'hi',
-  //         age: 30,
-  //         password: "bbb"
-  //       }
-  //     })
-  //   })
-  //   .then(r => r.json())
-  //   .then(console.log)
-  // }
-
-  // componentDidMount = () => {
-  //   this.testFetch()
-  // }
-
-  // loggedIn = (userData) => {
-  //   this.setState({
-  //       auth: {
-  //         user: {...userData}
-  //       }
-  //   })
-  // }
 
 
   render() {

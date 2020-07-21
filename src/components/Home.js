@@ -24,12 +24,6 @@ class Home extends Component {
         .catch(console.log)
     }
 
-    getUserTransactions = () => {
-        api.auth.fetchCreatedTransactions()
-        .then(console.log)
-        .catch(console.log)
-    }
-
     
 
     render() {
