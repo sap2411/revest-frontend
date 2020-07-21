@@ -48,10 +48,11 @@ class AccountForm extends Component {
             // Set error messages
             this.setState({fetchMessages: response.errors})
          } else{
+            localStorage.setItem("token", response.jwt)
+
             // Redirect via state update
             this.setState({redirect: '/home'})
             // Fake log in user
-            localStorage.setItem("token", response.jwt)
             this.props.loggedIn(response.user.data.attributes)
         }  
     }

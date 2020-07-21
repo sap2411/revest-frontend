@@ -20,7 +20,7 @@ class Home extends Component {
 
     getTransactions = (access_token) => {
         api.auth.fetchTransactions(access_token)
-        .then(console.log)
+        .then(this.props.history.push('/statistics'))
         .catch(console.log)
     }
 
@@ -30,11 +30,7 @@ class Home extends Component {
         .catch(console.log)
     }
 
-    getBudgets = () => {
-        api.auth.fetchBudgets()
-        .then(console.log)
-        .catch(console.log)
-    }
+    
 
     render() {
         return (
@@ -43,8 +39,6 @@ class Home extends Component {
             <p className="lead">The next step is to connect your bank account so we can work our magic</p>
             <hr className="my-4"/>
             <Plaid onSuccess={this.onSuccess}/>
-            <button onClick={this.getBudgets}>Lets GET it</button>
-            <button onClick={this.getUserTransactions}>Lets see it</button>
         </div>
         );
     }
