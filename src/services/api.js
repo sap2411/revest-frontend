@@ -48,7 +48,27 @@ const plaidAuth = userData => {
   }).then(res => res.json());
 }
 
-// const onPlaidSuccess
+const fetchTransactions = accessToken => {
+  console.log(accessToken)
+  return fetch(`${API_ROOT}/get-transactions`, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify(accessToken)
+  }).then(res => res.json());
+}
+
+const fetchCreatedTransactions = () => {
+  return fetch(`${API_ROOT}/transactions`, {
+    method: "GET",
+    headers: headers()
+  }).then(res => res.json());
+}
+const fetchBudgets = () => {
+  return fetch(`${API_ROOT}/budgets`, {
+    method: "GET",
+    headers: headers()
+  }).then(res => res.json());
+}
 
 
 export const api = {
@@ -56,6 +76,9 @@ export const api = {
       login,
       getCurrentUser,
       createNewUser,
-      plaidAuth
+      plaidAuth,
+      fetchTransactions,
+      fetchCreatedTransactions,
+      fetchBudgets
     },
 };

@@ -13,9 +13,28 @@ class Home extends Component {
         api.auth.plaidAuth({token: token})
         .then(resp => {
             localStorage.setItem("access_token", resp.access_token);
+            this.getTransactions({access_token: resp.access_token})
         })
         .catch(console.log);
     };
+
+    getTransactions = (access_token) => {
+        api.auth.fetchTransactions(access_token)
+        .then(console.log)
+        .catch(console.log)
+    }
+
+    getUserTransactions = () => {
+        api.auth.fetchCreatedTransactions()
+        .then(console.log)
+        .catch(console.log)
+    }
+
+    getBudgets = () => {
+        api.auth.fetchBudgets()
+        .then(console.log)
+        .catch(console.log)
+    }
 
     render() {
         return (
@@ -24,6 +43,8 @@ class Home extends Component {
             <p className="lead">The next step is to connect your bank account so we can work our magic</p>
             <hr className="my-4"/>
             <Plaid onSuccess={this.onSuccess}/>
+            <button onClick={this.getBudgets}>Lets GET it</button>
+            <button onClick={this.getUserTransactions}>Lets see it</button>
         </div>
         );
     }
