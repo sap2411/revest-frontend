@@ -20,7 +20,7 @@ class Home extends Component {
 
     getTransactions = (access_token) => {
         api.auth.fetchTransactions(access_token)
-        .then(this.props.history.push('/statistics'))
+        .then(() => this.props.history.push('/statistics'))
         .catch(console.log)
     }
 
