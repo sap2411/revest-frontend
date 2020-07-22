@@ -13,7 +13,10 @@ class Statistics extends Component{
     state = {
         budgets:[],
         transactions: [],
-        totals: []
+        totals: [],
+        incomeSurplus: null,
+        diff: [],
+        investment: false
     }
 
     componentDidMount = () => {
@@ -33,17 +36,23 @@ class Statistics extends Component{
     calculateTotals = () => {
 
         console.log(this.state.budgets)
+        let arr2 = []
         let arr = this.state.budgets.map(budget => {
             let obj = {}
+            let obj2 = {}
             let spent = 0
             if (budget.transactions.length > 0) spent = Math.round(100*(budget.transactions.reduce ((total, transaction) => total + transaction.amount, 0)))/100
             obj.name = budget.category.name
             obj.amount = spent
+            obj2.name = budget.category.name
+            obj2.amount = (budget.amount - spent)
+            arr2.push(obj2)
             return obj
         })
         this.setState((prevState) => ({
-                totals: [...prevState.totals, ...arr]
-        }), () => {console.log(this.state.totals)})
+                totals: [...prevState.totals, ...arr],
+                diff: [...arr2]
+        }), this.checkIncome)
     }
 
     getBudgets = () => {
@@ -67,6 +76,37 @@ class Statistics extends Component{
         .catch(console.log)
     }
 
+    checkIncome = () => {
+        let total = Math.round(100*(this.state.totals.reduce ((acc, spent) => acc + spent.amount, 0)))/100
+        let investment = this.calculateInvestment()
+        console.log(total, this.props.user.income)
+        this.setState({
+            incomeSurplus: total,
+            investment: investment
+        })
+    }
+
+    calculateInvestment = () => {
+        let investment = 0
+        this.state.diff.forEach(diff => diff.amount < 0 ? (investment = diff.amount + investment): null)
+        console.log(investment)
+        return investment
+    }
+
+    calculateReturn = (num) => {
+        let ageTillSixty = 60 - this.props.user.age
+        let total = num
+        for(let i = 0; i < ageTillSixty; i++){
+        total = total + (total*0.07)
+        }
+        return Math.round(total)
+    }
+
+    displayInsights = () => {
+        let excess = Math.round(this.state.investment * -1)
+    return <p>We have determined that you have spent up to {excess} in excess across several budgets. If you were to cut back 10%, or ${excess / 10} of this excess and invest it in a low risk index fund, you could stand to have a ${this.calculateReturn(excess)} return on that one investment when you turn 60</p>
+    }
+
     render(){
     return (
         <div className="jumbotron rounded-lg col-6 py-5 mt-5 bg-white mx-auto text-center" >
@@ -75,6 +115,7 @@ class Statistics extends Component{
             {this.state.totals.length > 0 ? <BudgetChart  budgets={this.state.budgets.slice(0,6)} /> : null}
             {this.state.totals.length > 0 ? <SpentChart  totals={this.state.totals} /> : null}
             {this.state.totals.length > 0 ? <RadarChart budgets={this.state.budgets.slice(0,7)} totals={this.state.totals.slice(0,7)} /> : null}
+            {this.state.investment ? this.displayInsights() : null}
         </div>
     );
     }
