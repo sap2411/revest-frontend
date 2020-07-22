@@ -107,7 +107,7 @@ class Statistics extends Component{
     calculateInvestment = (input) => {
         let investment = 0
         input.forEach(diff => diff.amount < 0 ? (investment = diff.amount + investment): null)
-        console.log(investment)
+        if (investment == 0) investment = -200
         return investment
     }
 
@@ -123,7 +123,7 @@ class Statistics extends Component{
         }
         let obj = {
             yearlyReturn: [...arr],
-            ages: ageArr,
+            ages: [...ageArr, 60],
             totalReturn: total
         }
         return obj
@@ -146,9 +146,9 @@ class Statistics extends Component{
             {this.state.totals.length > 0 ? this.renderBudgets() : null}
             {this.state.totals.length > 0 ? <BudgetChart  budgets={this.state.budgets.slice(0,6)}/> : null}
             {this.state.totals.length > 0 ? <SpentChart  totals={this.state.totals} /> : null}
-            {this.state.totals.length > 0 ? <RadarChart budgets={this.state.budgets.slice(0,7)} totals={this.state.totals.slice(0,7)} /> : null}
+            {this.state.totals.length > 0 ? <RadarChart budgets={this.state.budgets.slice(0,6)} totals={this.state.totals.slice(0,6)} /> : null}
             {this.state.investment ? this.displayInsights() : null}
-            <button onClick={this.handleClick}>Investment Resources</button>
+            <button className="btn btn-block btn-success p" onClick={this.handleClick}>Investment Resources</button>
         
             
         
