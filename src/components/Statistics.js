@@ -10,6 +10,7 @@ import InvestmentChart from '../charts/InvestmentChart.js'
 
 
 
+
 class Statistics extends Component{
     state = {
         budgets:[],
@@ -134,19 +135,25 @@ class Statistics extends Component{
     }
 
     handleClick = () => {
+        console.log('clicked')
         this.props.history.push('/resources')
     }
 
     render(){
     return (
         <div className="jumbotron rounded-lg col-6 py-5 mt-5 bg-white mx-auto text-center" >
-            <h1 className="display-4">Compiling data...</h1>
+            {this.state.investment ? <h1 className="display-4">Budget Breakdown</h1> : <h1 className="display-4">Compiling data...</h1>}
             {this.state.totals.length > 0 ? this.renderBudgets() : null}
             {this.state.totals.length > 0 ? <BudgetChart  budgets={this.state.budgets.slice(0,6)}/> : null}
             {this.state.totals.length > 0 ? <SpentChart  totals={this.state.totals} /> : null}
             {this.state.totals.length > 0 ? <RadarChart budgets={this.state.budgets.slice(0,7)} totals={this.state.totals.slice(0,7)} /> : null}
             {this.state.investment ? this.displayInsights() : null}
-            <button onclick={this.handleClick}>Investment Resources</button>
+            <button onClick={this.handleClick}>Investment Resources</button>
+        
+            
+        
+        
+        
         </div>
     );
     }

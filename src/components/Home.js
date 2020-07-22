@@ -7,6 +7,9 @@ import { api } from '../services/api';
 class Home extends Component {
     constructor(props){
         super(props)
+        this.sate = {
+            // transactions: (this.props.user.data.relationships.transactions.data.length > 0)
+        }
     }
 
     onSuccess = (token, metadata) => {
@@ -52,7 +55,8 @@ class Home extends Component {
             <h1 className="display-4">You're logged in and ready to go</h1>
             <p className="lead">The next step is to connect your bank account so we can work our magic</p>
             <hr className="my-4"/>
-            <Plaid onSuccess={this.onSuccess}/>
+            <h5>Click Here To Retrieve Your Latest Transaction Data</h5>
+            <Plaid transactions={true}onSuccess={this.onSuccess}/>
         </div>
         );
     }

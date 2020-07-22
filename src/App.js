@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   login = data => {
-    const updatedState = { ...this.state.auth, user: {id: data.id,  first_name: data.first_name} };
+    const updatedState = { ...this.state.auth, user: {id: data.id,  first_name: data.first_name, age: data.age }};
     this.setState({ auth: updatedState });
   };
 
