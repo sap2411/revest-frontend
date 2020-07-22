@@ -24,7 +24,27 @@ class Home extends Component {
         .catch(console.log)
     }
 
-    
+
+    // getBudgets = () => {
+    //     api.auth.fetchBudgets()
+    //     .then(res => {
+    //         this.setState({
+    //             budgets: [...res]
+    //         }, this.calculateTotals)
+    //     })
+    //     .catch(console.log)
+    // }
+
+    // getUserTransactions = () => {
+    //     api.auth.fetchCreatedTransactions()
+    //     .then(resp => {
+    //         console.log(resp)
+    //         this.setState({
+    //             transactions: [...resp]
+    //         })
+    //     })
+    //     .catch(console.log)
+    // }    
 
     render() {
         return (

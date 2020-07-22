@@ -6,6 +6,7 @@ import { api } from '../services/api';
 import BudgetChart from '../charts/BudgetChart.js'
 import SpentChart from '../charts/SpentChart.js'
 import RadarChart from '../charts/RadarChart.js'
+import InvestmentChart from '../charts/InvestmentChart.js'
 
 
 
@@ -16,12 +17,15 @@ class Statistics extends Component{
         totals: [],
         incomeSurplus: null,
         diff: [],
-        investment: false
+        investment: false,
+        yearlyReturn: [],
+        ages: [],
+        totalReturn: false
     }
 
     componentDidMount = () => {
         this.getBudgets()
-        this.getUserTransactions()
+        // this.getUserTransactions()
         // this.calculateTotals()
     }
 
@@ -33,11 +37,9 @@ class Statistics extends Component{
         })
     }
 
-    calculateTotals = () => {
-
-        console.log(this.state.budgets)
+    calculateTotals = (stateData) => {
         let arr2 = []
-        let arr = this.state.budgets.map(budget => {
+        let arr = stateData.budgets.map(budget => {
             let obj = {}
             let obj2 = {}
             let spent = 0
@@ -49,62 +51,90 @@ class Statistics extends Component{
             arr2.push(obj2)
             return obj
         })
-        this.setState((prevState) => ({
-                totals: [...prevState.totals, ...arr],
-                diff: [...arr2]
-        }), this.checkIncome)
+        let newState = {
+                totals: [...arr],
+                diff: [...arr2],
+                budgets: [...stateData.budgets],
+                transactions: [...stateData.transactions]
+        }
+        this.checkIncome(newState)
     }
 
     getBudgets = () => {
         api.auth.fetchBudgets()
         .then(res => {
-            this.setState({
-                budgets: [...res]
-            }, this.calculateTotals)
+            // this.setState({
+            //     budgets: [...res]
+            // }, this.calculateTotals)
+            this.getUserTransactions(res)
         })
         .catch(console.log)
     }
 
-    getUserTransactions = () => {
+    getUserTransactions = (budgets) => {
         api.auth.fetchCreatedTransactions()
         .then(resp => {
-            console.log(resp)
-            this.setState({
-                transactions: [...resp]
-            })
+            let newState = {
+                transactions: [...resp],
+                budgets: [...budgets]
+            }
+            this.calculateTotals(newState)
         })
         .catch(console.log)
     }
 
-    checkIncome = () => {
-        let total = Math.round(100*(this.state.totals.reduce ((acc, spent) => acc + spent.amount, 0)))/100
-        let investment = this.calculateInvestment()
+    checkIncome = (obj) => {
+        console.log("contain totals?", obj)
+        let total = Math.round(100*(obj.totals.reduce ((acc, spent) => acc + spent.amount, 0)))/100
+        let investment = this.calculateInvestment(obj.diff)
         console.log(total, this.props.user.income)
+        let excess = Math.round(investment * -1)
+        let investmentData = this.calculateReturn((excess))
         this.setState({
             incomeSurplus: total,
-            investment: investment
+            investment: investment,
+            totals: [...obj.totals],
+            diff: [...obj.diff],
+            budgets: [...obj.budgets],
+            transactions: [...obj.transactions],
+            yearlyReturn: [...investmentData.yearlyReturn],
+            ages: [...investmentData.ages],
+            totalReturn: investmentData.totalReturn
         })
     }
 
-    calculateInvestment = () => {
+    calculateInvestment = (input) => {
         let investment = 0
-        this.state.diff.forEach(diff => diff.amount < 0 ? (investment = diff.amount + investment): null)
+        input.forEach(diff => diff.amount < 0 ? (investment = diff.amount + investment): null)
         console.log(investment)
         return investment
     }
 
     calculateReturn = (num) => {
-        let ageTillSixty = 60 - this.props.user.age
+        // let ageTillSixty = 60 - this.props.user.age
         let total = num
-        for(let i = 0; i < ageTillSixty; i++){
-        total = total + (total*0.07)
+        let arr = [num]
+        let ageArr = []
+        for(let i = this.props.user.age; i < 60; i++){
+            total = (Math.round(total + (total*0.07)) + num)
+            ageArr.push(i)
+            arr.push(total)
         }
-        return Math.round(total)
+        let obj = {
+            yearlyReturn: [...arr],
+            ages: ageArr,
+            totalReturn: total
+        }
+        return obj
     }
 
     displayInsights = () => {
         let excess = Math.round(this.state.investment * -1)
-    return <p>We have determined that you have spent up to {excess} in excess across several budgets. If you were to cut back 10%, or ${excess / 10} of this excess and invest it in a low risk index fund, you could stand to have a ${this.calculateReturn(excess)} return on that one investment when you turn 60</p>
+        return <div><p><br/>We have determined that this month you have spent approximately ${excess} dollars in excess across several budgets. If you were to cut back and invest that excess in a low risk index fund each month, you could see it grow to a ${this.state.totalReturn} dollar return on that one investment by the time you turn 60</p><InvestmentChart yearlyReturn={this.state.yearlyReturn} ages={this.state.ages} /></div>
+    }
+
+    handleClick = () => {
+        this.props.history.push('/resources')
     }
 
     render(){
@@ -112,10 +142,11 @@ class Statistics extends Component{
         <div className="jumbotron rounded-lg col-6 py-5 mt-5 bg-white mx-auto text-center" >
             <h1 className="display-4">Compiling data...</h1>
             {this.state.totals.length > 0 ? this.renderBudgets() : null}
-            {this.state.totals.length > 0 ? <BudgetChart  budgets={this.state.budgets.slice(0,6)} /> : null}
+            {this.state.totals.length > 0 ? <BudgetChart  budgets={this.state.budgets.slice(0,6)}/> : null}
             {this.state.totals.length > 0 ? <SpentChart  totals={this.state.totals} /> : null}
             {this.state.totals.length > 0 ? <RadarChart budgets={this.state.budgets.slice(0,7)} totals={this.state.totals.slice(0,7)} /> : null}
             {this.state.investment ? this.displayInsights() : null}
+            <button onclick={this.handleClick}>Investment Resources</button>
         </div>
     );
     }

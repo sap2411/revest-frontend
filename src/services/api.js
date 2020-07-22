@@ -22,7 +22,6 @@ const getCurrentUser = () => {
     return fetch(`${API_ROOT}/profile`, {
       headers: headers()
     }).then(res => {
-      console.log("Aidan", res, token())
       return res.json();
     });
 };

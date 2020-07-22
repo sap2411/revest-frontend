@@ -34,7 +34,9 @@ const options = {
     };
     return (
       <>
+      <br/>
         <Radar width={400} height={300} data={data} options={options} />
+        <br/>
       </>
     );
   }
