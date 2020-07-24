@@ -48,7 +48,6 @@ const plaidAuth = userData => {
 }
 
 const fetchTransactions = accessToken => {
-  console.log(accessToken)
   return fetch(`${API_ROOT}/get-transactions`, {
     method: "POST",
     headers: headers(),

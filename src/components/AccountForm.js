@@ -12,7 +12,7 @@ class AccountForm extends Component {
             password: '',
             age: !!this.props.user.id ? this.props.user.attributes.age : '',
             income: !!this.props.user.id ? this.props.user.attributes.income : '',
-            fetchMessages: '',
+            fetchMessages: false,
             passwordC: '',
             redirect: null
         }
@@ -44,9 +44,9 @@ class AccountForm extends Component {
 
     handleFetchResponse = response => {
         console.log(response)
-        if (response.errors) {
+        if (response.error) {
             // Set error messages
-            this.setState({fetchMessages: response.errors})
+            this.setState({fetchMessages: response.error})
          } else{
             localStorage.setItem("token", response.jwt)
 
@@ -113,7 +113,7 @@ class AccountForm extends Component {
                     {this.state.fetchMessages &&
                         <div className="d-flex justify-content-center">
                             <ul className="list-unstyled text-danger">
-                                {this.state.fetchMessages.map((message, index) => <li key={index}>{message}</li>)}
+                                {<li key={1}>{this.state.fetchMessages} email already in use</li>}
                             </ul>
                         </div>
                     }

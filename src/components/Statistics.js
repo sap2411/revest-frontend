@@ -6,7 +6,8 @@ import { api } from '../services/api';
 import BudgetChart from '../charts/BudgetChart.js'
 import SpentChart from '../charts/SpentChart.js'
 import RadarChart from '../charts/RadarChart.js'
-import InvestmentChart from '../charts/InvestmentChart.js'
+import InvestmentChart from '../charts/InvestmentChart.js';
+import { Tabs, Tab } from "react-bootstrap";
 
 
 
@@ -141,19 +142,26 @@ class Statistics extends Component{
 
     render(){
     return (
-        <div className="jumbotron rounded-lg col-6 py-5 mt-5 bg-white mx-auto text-center" >
-            {this.state.investment ? <h1 className="display-4">Budget Breakdown</h1> : <h1 className="display-4">Compiling data...</h1>}
-            {this.state.totals.length > 0 ? this.renderBudgets() : null}
-            {this.state.totals.length > 0 ? <BudgetChart  budgets={this.state.budgets.slice(0,6)}/> : null}
-            {this.state.totals.length > 0 ? <SpentChart  totals={this.state.totals} /> : null}
-            {this.state.totals.length > 0 ? <RadarChart budgets={this.state.budgets.slice(0,6)} totals={this.state.totals.slice(0,6)} /> : null}
-            {this.state.investment ? this.displayInsights() : null}
-            <button className="btn btn-block btn-success p" onClick={this.handleClick}>Investment Resources</button>
-        
-            
-        
-        
-        
+        <div className="jumbotron rounded-lg col-11 py-5 mt-2 bg-white mx-auto text-center" >
+        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
+            <Tab eventKey="home" title="Home">
+                {this.state.investment ? <h1 className="display-4">Budget Breakdown</h1> : <h1 className="display-4">Compiling data...</h1>}
+                {this.state.totals.length > 0 ? 
+                (<div >{this.renderBudgets()}
+                <BudgetChart  budgets={this.state.budgets.slice(0,6)}/>
+                <SpentChart  totals={this.state.totals} />
+                <RadarChart budgets={this.state.budgets.slice(0,6)} totals={this.state.totals.slice(0,6)} /></div>) 
+                : null}
+            </Tab>
+            <Tab eventKey="food" title="Food">
+                <p>hi</p>
+            </Tab>
+            <Tab eventKey="investment" title="Investment">
+                {this.state.investment ? this.displayInsights() : null}
+                <button className="btn btn-block btn-success p" onClick={this.handleClick}>Investment Resources</button>    
+            </Tab>
+        </Tabs>
+     
         </div>
     );
     }

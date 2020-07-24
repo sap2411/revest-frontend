@@ -2,10 +2,29 @@ import React from 'react';
 import { Doughnut } from "react-chartjs-2";
 
 const options = {
+  maintainAspectRatio: false,
+  responsive: false,
+
+  legend: {
+    position: "top",
+  },
   title: {
     display: true,
-    text: "Budget",
+    text: "Budget Categories",
     fontSize: 20,
+  },
+
+  hover: {
+    mode: "nearest",
+    intersect: false,
+  },
+  tooltips: {
+    custom: false,
+    mode: "nearest",
+    intersect: false,
+  },
+  animation: {
+    duration: 3000
   }
 };
   
@@ -41,9 +60,9 @@ const options = {
     };
     return (
       <>
-        <br/>
+        
         <Doughnut width={400} height={300} data={data} options={options} />
-        <br/>
-      </>
+        <br/><br/><br/>
+        </>
     );
   }

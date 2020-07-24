@@ -6,17 +6,42 @@ import { Bar } from "react-chartjs-2";
   export default function InvestmentChart({ yearlyReturn, ages }) {
 
     const options = {
-        title: {
-          display: true,
-          text: "Investment Growth",
-          fontSize: 20,
-        }
-      };
-
-      // const array = (age) => {
-      //   let arr = [age]
-        
-      // }
+      maintainAspectRatio: true,
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              // width: 150,
+            },
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+      ],
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Investment Growth",
+        fontSize: 20,
+      },
+    
+      hover: {
+        mode: "nearest",
+        intersect: false,
+      },
+      tooltips: {
+        custom: false,
+        mode: "nearest",
+        intersect: false,
+      },
+      animation: {
+        duration: 3000
+      }
+    };
   
     const data = {
       labels: ages.map((age) => `${age}`),
@@ -31,10 +56,10 @@ import { Bar } from "react-chartjs-2";
       ],
     };
     return (
-      <>
-        <br/>
-        <Bar width={400} height={300} data={data} options={options} />
-        <br/>
-      </>
+      <div>
+        
+        <Bar width={400} height={200}  data={data} options={options} />
+        
+      </div>
     );
   }

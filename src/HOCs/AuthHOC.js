@@ -6,7 +6,8 @@ const AuthHOC = WrappedComponent => {
   return class AuthHOC extends React.Component {
 
     state = {
-      authorized: false
+      authorized: false,
+      user: []
     };
 
     componentDidMount() {
@@ -26,7 +27,8 @@ const AuthHOC = WrappedComponent => {
           } else {
             console.log("authorized")
             this.setState({
-              authorized: true
+              authorized: true,
+              user: resp.user.data.attributes
             })
           }
         });
@@ -41,7 +43,7 @@ const AuthHOC = WrappedComponent => {
       return (
         <div>
           {this.isAuthorized() ? (
-            <WrappedComponent {...this.props} />
+            <WrappedComponent {...this.props}user={this.state.user} />
           ) : (
             null
           )}

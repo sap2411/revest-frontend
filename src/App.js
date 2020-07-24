@@ -9,6 +9,7 @@ import { api } from "./services/api";
 import Plaid from './components/Plaid.js';
 import Statistics from './components/Statistics.js';
 import Resources from './components/Resources.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import './App.css';
@@ -59,7 +60,7 @@ class App extends Component {
         <Route exact path="/Home" render={props => <Home {...props}  user={this.state.auth.user} />} />
         <Route exact path="/create-account" component={() => <AccountForm user={this.state.auth.user} loggedIn={this.login} />} />
         <Route exact path="/statistics" component={props => <Statistics {...props} user={this.state.auth.user}  />} />
-        <Route exact path="/Resources" component={props => <Resources {...props} user={this.state.auth.user}  />} />
+        <Route exact path="/resources" component={props => <Resources {...props} user={this.state.auth.user}  />} />
         {/* <Route exact path="/edit-account" component={() => <AccountForm  user={this.state.user} />} /> */}
       </div>
     </Router>

@@ -2,12 +2,33 @@ import React from 'react';
 import { Doughnut } from "react-chartjs-2";
 
 const options = {
+  maintainAspectRatio: false,
+  responsive: false,
+
+  
+  legend: {
+    position: "left",
+  },
   title: {
     display: true,
-    text: "Spending",
+    text: "Your Spending",
     fontSize: 20,
+  },
+
+  hover: {
+    mode: "nearest",
+    intersect: false,
+  },
+  tooltips: {
+    custom: false,
+    mode: "nearest",
+    intersect: false,
+  },
+  animation: {
+    duration: 3000
   }
 };
+
   
   export default function SpentChart({ totals }) {
     console.log(totals)
@@ -45,9 +66,9 @@ const options = {
     };
     return (
       <>
-      <br/>
+      
         <Doughnut width={400} height={300} data={data} options={options} />
-        <br/>
+        
       </>
     );
   }
