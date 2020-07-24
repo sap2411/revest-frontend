@@ -25,21 +25,9 @@ const About = (props) => {
         <div>
         <div className="jumbotron rounded-lg col-10 py-1 mt-5 bg-white mx-auto text-center">
             <h1 className="display-4"><i className="fas fa-money-bill-wave"></i> Revest </h1>
-            <h7>The Best Place To Begin Your Personal Finance Journey</h7>
+            <h5>The Best Place To Begin Your Personal Finance Journey</h5>
             <hr className="my-4"/>
-            {props.user.id ? null :
-                <div><Link exact to="/create-account" title="Create Account">
-                <button className="btn btn-primary btn-lg mx-4" type="button">
-                    <i className="fas fa-user-plus"></i>
-                    <span className="d-none d-sm-none d-md-inline"> Create Account</span>
-                </button>
-            </Link>
-            <Link exact to="/login" title="Create Account">
-                <button className="btn btn-primary btn-lg mx-4" type="button">
-                    <i className="fas fa-user-plus"></i>
-                    <span className="d-none d-sm-none d-md-inline"> Log In</span>
-                </button>
-            </Link></div>}
+
             
        
         <Card bg="info"  text="white">
@@ -77,6 +65,13 @@ const About = (props) => {
         </Card>
         </CardDeck>
                 </div>
+                {props.user.id ? null :
+                <div className="text-center"><Link exact to="/create-account" title="Create Account">
+                <button className="btn btn-primary btn-lg mx-4" type="button">
+                    <i className="fas fa-user-plus"></i>
+                    <span className="d-none d-sm-none d-md-inline"> Let's Get Started!</span>
+                </button>
+            </Link> <br/><br/></div>}
         </div>
     )
 }

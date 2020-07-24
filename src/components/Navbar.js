@@ -32,7 +32,7 @@ const Navbar = ({ user, handleLogOut }) => {
                             <li className="nav-item">
                                 <NavLink exact to="/login" className="nav-link" title="Login">
                                     <i className="fas fa-sign-in-alt"></i>
-                                    <span className="d-none d-sm-none d-md-inline p">Login</span>
+                                    <span className="d-none d-sm-none d-md-inline p"> Login</span>
                                 </NavLink>
                             </li>
                     </Fragment>

@@ -136,7 +136,6 @@ class Statistics extends Component{
     }
 
     handleClick = () => {
-        console.log('clicked')
         this.props.history.push('/resources')
     }
 

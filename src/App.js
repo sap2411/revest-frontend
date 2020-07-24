@@ -58,7 +58,7 @@ class App extends Component {
         <Route exact path="/plaid" component={() => <Plaid user={this.state.auth.user} />} />
         <Route exact path="/login" render={props => <Login {...props}  onLogin={this.login} />} />
         <Route exact path="/Home" render={props => <Home {...props}  user={this.state.auth.user} />} />
-        <Route exact path="/create-account" component={() => <AccountForm user={this.state.auth.user} loggedIn={this.login} />} />
+        <Route exact path="/create-account" component={props => <AccountForm {...props} user={this.state.auth.user} loggedIn={this.login} />} />
         <Route exact path="/statistics" component={props => <Statistics {...props} user={this.state.auth.user}  />} />
         <Route exact path="/resources" component={props => <Resources {...props} user={this.state.auth.user}  />} />
         {/* <Route exact path="/edit-account" component={() => <AccountForm  user={this.state.user} />} /> */}

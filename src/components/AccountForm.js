@@ -68,10 +68,11 @@ class AccountForm extends Component {
         }
 
         return (
-            <div className="card col-3 my-5 mx-auto px-0 rounded-lg text-center">
+            <div className="card col-4 my-5 mx-auto px-0 rounded-lg text-center">
                 <form className="card-body" onSubmit={event => this.handleSubmit(event)}>
-                    <div className="form-group col-sm">
+                    <div className="form-group col-sm text-left">
                         <h3>{!!this.props.user.id ? 'Edit' : 'Create'} Account</h3>
+                        <h7>Already have an account? <span className="p" onClick={() => this.props.history.push('/login')}><u>sign in</u></span></h7>
                     </div>
                     <div className="form-group col-sm">
                         <input type="text" className="form-control" placeholder="First Name" name="first_name" value={this.state.first_name} onChange={event => this.handleChange(event)}/>
@@ -113,7 +114,7 @@ class AccountForm extends Component {
                     {this.state.fetchMessages &&
                         <div className="d-flex justify-content-center">
                             <ul className="list-unstyled text-danger">
-                                {<li key={1}>{this.state.fetchMessages} email already in use</li>}
+                                {<li key={1}>{this.state.fetchMessages}</li>}
                             </ul>
                         </div>
                     }

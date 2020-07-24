@@ -13,7 +13,7 @@ const Plaid = props => {
         onSuccess={props.onSuccess}
       >
         <i className="fa fa-credit-card" aria-hidden="true"></i>
-        <span className="d-none d-sm-none d-md-inline"> Connect Bank</span> 
+        <span className="d-none d-sm-none d-md-inline"> Link Your Account</span> 
       </PlaidLink>
     );
   };

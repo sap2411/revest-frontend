@@ -51,12 +51,22 @@ class Home extends Component {
 
     render() {
         return (
-        <div className="jumbotron rounded-lg col-6 py-5 mt-5 bg-white mx-auto text-center" >
-            <h1 className="display-4">Let's grab your latest bank data</h1>
-            <p className="lead">Click the button below and connect your bank account so we can work our magic</p>
-            <hr className="my-4"/>
-            {this.props.user.has_connection ? <button className="btn btn-block btn-success p" onClick={() => {this.getTransactions()}}>Connect Bank</button> : <Plaid transactions={true} onSuccess={this.onSuccess}/>}
-        </div>
+            <div>
+            { this.props.user.has_connection ? 
+                <div className="jumbotron rounded-lg col-6 py-5 mt-5 bg-white mx-auto text-center" >
+                    <h1 className="display-4">Let's grab your latest bank data</h1>
+                    <p className="lead">Click the button below to update your transaction data for the last 31 days</p>
+                    <hr className="my-4"/>
+                    <button className="btn btn-block btn-success p" onClick={() => {this.getTransactions()}}>Refresh Data</button> 
+                </div>
+                    : 
+                <div className="jumbotron rounded-lg col-6 py-5 mt-5 bg-white mx-auto text-center" >
+                    <h1 className="display-4">Now let’s connect your bank account to start tracking your finances.</h1>
+                    <p className="lead">You will be asked to select your bank and login securely.</p>
+                    <hr className="my-4"/>
+                    <Plaid transactions={true} onSuccess={this.onSuccess}/>
+                </div>}
+            </div>
         );
     }
 }

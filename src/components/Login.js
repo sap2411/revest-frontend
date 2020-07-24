@@ -36,14 +36,14 @@ class Login extends React.Component {
   render() {
     const { fields } = this.state;
     return (
-      <div>
-        <div className="card col-3 my-5 mx-auto px-0 rounded-lg text-center">
+        <div className="card col-4 my-5 mx-auto px-0 rounded-lg text-center">
           <form className="card-body" onSubmit={this.handleSubmit}>
-            <div className="form-group col-sm">
-            <h2>Log In</h2>
+            <div className="form-group col-sm text-left">
+              <h3 >Welcome Back</h3>
+              <h7>Don't have an account? <span className="p" onClick={() => this.props.history.push('/create-account')}><u>sign up</u></span></h7>
             </div>
             <div className="form-group col-sm">
-              <input
+              <input type='email' className="form-control" 
                 name="email"
                 placeholder="Email"
                 value={fields.email}
@@ -51,7 +51,7 @@ class Login extends React.Component {
               />
             </div>
             <div className="form-group col-sm">
-              <input
+              <input className="form-control" 
                 name="password"
                 type="password"
                 placeholder="Password"
@@ -60,8 +60,8 @@ class Login extends React.Component {
               />
             </div>
             <div className="form-group col-sm" >
-            <button type="submit" className="btn btn-block btn-success p">
-              Submit
+            <button type="submit" className="btn btn-block btn-success p"> <i className="fas fa-sign-in-alt"></i>
+              <span> Submit</span>
             </button>
             </div>
             <div className="form-group col-sm" >
@@ -69,7 +69,6 @@ class Login extends React.Component {
             </div>
           </form>
         </div>
-      </div>
     );
   }
 }
