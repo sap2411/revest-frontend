@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Card, CardDeck, CardColumns } from "react-bootstrap";
+
 
 const Resources = (props) => {
     const newTab = (url) => { 
@@ -19,14 +21,89 @@ const Resources = (props) => {
 
         <h5>Simplicity:</h5><p>Investing in the Vanguard Total Stock Market Index Fund (VTSAX) for example, is a way to make a relatively safe investment, and let it grow without much work, fees, or complication. Also, if you invest through a Roth IRA, that investment will already have income tax taken out, so you won't have to pay that tax when you are over 60.</p>
         <br/>
-        <h2><u>Featured Videos:</u></h2>
+        <h2><u>Featured Video:</u></h2>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/zR64-Ea_r5U" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-        <br/>
-        <img width="200" height="130" onClick={() => newTab("https://investor.vanguard.com/ira/roth-ira#:~:text=A%20Roth%20IRA%20is%20an,t%20owe%20any%20federal%20taxes.")} alt='Roth IRA' src='https://smartfinancialstrategies.com/wp-content/uploads/2018/01/infographic_.png' />
-        <img width="230" height="100" onClick={() => newTab("https://investor.vanguard.com/index-funds/")} alt='SMP 500' src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_BJDfojWmSj5RMqqRwOuDhAraxnQX-I_pVQ&usqp=CAU' />
-        <img width="200" height="130" onClick={() => newTab("http://www.robinhood.com/")} alt='Robinhood Investing' src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRrR0VjIuT1oDHdyHxv-UZMmW8J0PTANTNmQA&usqp=CAU' />
-
         <br/><br/>
+        <div className="ui two column  grid" >
+            <div className="col">
+                <h4><u>Investment Content:</u></h4>
+                <Card onClick={() => newTab("https://www.youtube.com/watch?v=ma4AFKoa9So&list=PLPdoRGhsS-tvjFqUmWTL1zlm9ZB3n6DrL")} bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                    <Card.Img variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThRSISn6NoMhHrJS0W3TCaf0287fcObFSScQ&usqp=CAU'  />
+                    <Card.Body>
+                        <Card.Text><h5>Graham Stephan</h5>
+                            Graham has an entertaining playlist of videos he has made on investing. Great for anyone who wants to learn in a lighthearted way.
+                        </Card.Text>
+                    </Card.Body>
+                </Card><br/>
+                <Card onClick={() => newTab("https://www.stackingbenjamins.com/")} bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                    <Card.Img style={{ width: '18rem' }} variant="top" src='https://www.stackingbenjamins.com/wp-content/uploads/stacking-benjamins-itunes-logo.png'  />
+                    <Card.Body>
+                        <Card.Text><h5>Stacking Benjamins</h5>
+                        Perfect for beginners. A parade of financial headlines, personal finance experts, and people with stories that inspire us. 
+                        </Card.Text>
+                    </Card.Body>
+                </Card><br/>
+            </div>
+            <div className="col">
+                <h4><u>Recommended Resources:</u></h4>
+                <Card onClick={() => newTab("https://investor.vanguard.com/ira/roth-ira#:~:text=A%20Roth%20IRA%20is%20an,t%20owe%20any%20federal%20taxes.")} bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                    <Card.Img variant="top" src='https://smartfinancialstrategies.com/wp-content/uploads/2018/01/infographic_.png'  />
+                    <Card.Body>
+                        <Card.Text><h5>Vanguard: Roth IRA</h5>
+                            Opening a Roth IRA can be a great first step towards investing while avoiding a large tax at the end of it.
+                        </Card.Text>
+                    </Card.Body>
+                </Card><br/>
+                <Card onClick={() => newTab("https://investor.vanguard.com/index-funds/")}  bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                    <Card.Img variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_BJDfojWmSj5RMqqRwOuDhAraxnQX-I_pVQ&usqp=CAU'  />
+                    <Card.Body>
+                        <Card.Text><h5>Vanguard: Index Funds</h5>
+                            Vanguard has a history of strong returns with index funds, and is a great trusted company to get guidance. Learn more here.
+                        </Card.Text>
+                    </Card.Body>
+                </Card><br/>
+                
+            </div>
+
+ 
+        </div><br/><br/>
+        <h4><u>Investment Platforms:</u></h4>
+        <CardDeck>
+            <Card onClick={() => newTab("http://www.robinhood.com/")}  bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                <Card.Img variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTCzMvBPWjMwKzFvpeiNBI6Xqk7avexEZlQVA&usqp=CAU'  />
+                <Card.Body>
+                    <Card.Text><h5>Robinhood</h5>
+                        Robinhood is a great and simple app for new investors.
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+            <Card onClick={() => newTab("https://www.acorns.com/")}  bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                <Card.Img  variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSpj67q8wgTxlH95mxx1szElaydk3J0sMQ8-g&usqp=CAU'  />
+                <Card.Body>
+                    <Card.Text><h5>Acorns</h5>
+                        Acorns rounds up every purchase to the next dollar and invests the difference on your behave, so you dont have to think about it.
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+            <Card onClick={() => newTab("https://www.webull.com/")}  bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                <Card.Img  variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS9M6Sg3vMHWUqO2lEraAXndCbpc47OGaa4Cg&usqp=CAU'  />
+                <Card.Body>
+                    <Card.Text><h5>Webull</h5>
+                        A simple investing app with low fees and a free stock upon sign-up
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+            <Card onClick={() => newTab("https://www.chase.com/personal/investments/you-invest")}  bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                <Card.Img  variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlcq09lvHYXTTZOpGC24UpQRUQx2wUvTdH7w&usqp=CAU'  />
+                <Card.Body>
+                    <Card.Text><h5>You Invest</h5>
+                        J.P. Morgan throw their hat in the personal investment ring with this easy to use app, and stellar customer service.
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        </CardDeck>
+        
+       
 
     </div>
     );

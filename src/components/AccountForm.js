@@ -6,12 +6,12 @@ class AccountForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            first_name: !!this.props.user.id ? this.props.user.attributes.first_name : '',
-            last_name: !!this.props.user.id ? this.props.user.attributes.last_name : '',
-            email: !!this.props.user.id ? this.props.user.attributes.email : '',
+            first_name: !!this.props.user.id ? this.props.user.first_name : '',
+            last_name: !!this.props.user.id ? this.props.user.last_name : '',
+            email: !!this.props.user.id ? this.props.user.email : '',
             password: '',
-            age: !!this.props.user.id ? this.props.user.attributes.age : '',
-            income: !!this.props.user.id ? this.props.user.attributes.income : '',
+            age: !!this.props.user.id ? this.props.user.age : '',
+            income: !!this.props.user.id ? this.props.user.income : '',
             fetchMessages: false,
             passwordC: '',
             redirect: null
@@ -72,7 +72,7 @@ class AccountForm extends Component {
                 <form className="card-body" onSubmit={event => this.handleSubmit(event)}>
                     <div className="form-group col-sm text-left">
                         <h3>{!!this.props.user.id ? 'Edit' : 'Create'} Account</h3>
-                        <h7>Already have an account? <span className="p" onClick={() => this.props.history.push('/login')}><u>sign in</u></span></h7>
+                        {!!this.props.user.id ? null : <h7>Already have an account? <span className="p" onClick={() => this.props.history.push('/login')}><u>sign in</u></span></h7>}
                     </div>
                     <div className="form-group col-sm">
                         <input type="text" className="form-control" placeholder="First Name" name="first_name" value={this.state.first_name} onChange={event => this.handleChange(event)}/>

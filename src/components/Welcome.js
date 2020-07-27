@@ -25,7 +25,7 @@ const About = (props) => {
         <div>
         <div className="jumbotron rounded-lg col-10 py-1 mt-5 bg-white mx-auto text-center">
             <h1 className="display-4"><i className="fas fa-money-bill-wave"></i> Revest </h1>
-            <h5>The Best Place To Begin Your Personal Finance Journey</h5>
+            <h5>Personal finance and investng doesn't have to be intimidating. That's why we are here to introduce these concepts to you in a personalized way</h5>
             <hr className="my-4"/>
 
             
@@ -34,7 +34,7 @@ const About = (props) => {
             <Card.Img variant="top" src="coin.jpg"  />
             <Card.Body>
             <Card.Text>
-            Track your spending and create an investment plan in three simple steps:
+            Track your spending and generate a personalized introduction to investing in 3 steps:
             </Card.Text>
             </Card.Body>
         </Card><br/>
@@ -51,7 +51,7 @@ const About = (props) => {
         <Card.Img variant="top" src="pie.png" />
             <Card.Body>
                 <Card.Text>
-                Visualize and manage your spending habits.
+                Visualize your spending habits, and identify overspending.
                 </Card.Text>
             </Card.Body>
         </Card>
@@ -59,7 +59,7 @@ const About = (props) => {
         <Card.Img variant="top" src="investment.png" />
             <Card.Body>
                 <Card.Text>
-                Generate a long-term investing plan.
+                Generate a long-term investing plan based off of your excess spending.
                 </Card.Text>
             </Card.Body>
         </Card>

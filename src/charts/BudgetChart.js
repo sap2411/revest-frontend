@@ -6,11 +6,11 @@ const options = {
   responsive: false,
 
   legend: {
-    position: "top",
+    position: "left",
   },
   title: {
     display: true,
-    text: "Budget Categories",
+    text: "Your Custom Budgets",
     fontSize: 20,
   },
 

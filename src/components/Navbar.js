@@ -59,7 +59,7 @@ const Navbar = ({ user, handleLogOut }) => {
                                 <span className="d-none d-sm-none d-md-inline p"> {user.first_name}</span>
                             </NavLink>
                             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <NavLink exact to="/edit-account" className="dropdown-item" ><i className="fas fa-user-edit"></i> Edit Account</NavLink>
+                                <NavLink exact to="/edit-account" className="dropdown-item" ><i className="fas fa-user-edit"></i> Edit / Delete Account</NavLink>
                                 <div className="dropdown-divider"></div>
                                 <NavLink exact to="/login" className="dropdown-item p" onClick={handleLogOut}><i className="fas fa-sign-out-alt"></i> Logout</NavLink>
                             </div>

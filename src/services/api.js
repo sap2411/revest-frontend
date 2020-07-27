@@ -39,6 +39,29 @@ const createNewUser = userData => {
     });
 }
 
+const updateUser = (userData, userId) => {
+  const options = {
+      method: 'PATCH',
+      headers: headers(),
+      body: JSON.stringify({user: userData})
+  }
+  return fetch(`${API_ROOT}/users/`+ userId, options)
+  .then(resp => {
+      console.log("updated", resp)
+      return resp.json()
+  });
+}
+
+
+const deleteUser = (userId) => {
+  const options = {
+      method: 'DELETE',
+      headers: headers(),
+  }
+  return fetch(`${API_ROOT}/users/` + userId, options)
+  .then(resp => resp.json())
+}
+
 const plaidAuth = userData => {
   return fetch(`${API_ROOT}/plaidlogin`, {
     method: "POST",
@@ -77,6 +100,8 @@ export const api = {
       plaidAuth,
       fetchTransactions,
       fetchCreatedTransactions,
-      fetchBudgets
+      fetchBudgets,
+      updateUser,
+      deleteUser
     },
 };
