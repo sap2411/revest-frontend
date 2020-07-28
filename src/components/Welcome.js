@@ -1,25 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import InvestmentChart from '../charts/InvestmentChart.js';
 import { Card, CardDeck } from "react-bootstrap";
 
 const About = (props) => {
-    const calculateReturn = () => {
-        // let ageTillSixty = 60 - this.props.user.age
-        let total = 100
-        let arr = [100]
-        let ageArr = []
-        for(let i = 22; i < 60; i++){
-            total = (Math.round(total + (total*0.07)) + 100)
-            ageArr.push(i)
-            arr.push(total)
-        }
-        let obj = {
-            yearlyReturn: [...arr],
-            ages: [...ageArr, 60],
-        }
-        return obj
-    }
+
 
     return (
         <div>
@@ -65,7 +49,7 @@ const About = (props) => {
         </Card>
         </CardDeck>
                 </div>
-                {props.user.id ? null :
+                {!!props.user.id ? null :
                 <div className="text-center"><Link exact to="/create-account" title="Create Account">
                 <button className="btn btn-primary btn-lg mx-4" type="button">
                     <i className="fas fa-user-plus"></i>

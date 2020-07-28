@@ -2,8 +2,7 @@ import React from 'react';
 import { Doughnut } from "react-chartjs-2";
 
 const options = {
-  maintainAspectRatio: false,
-  responsive: false,
+
 
   
   legend: {
@@ -31,7 +30,6 @@ const options = {
 
   
   export default function SpentChart({ totals }) {
-    console.log(totals)
     const data = {
       labels: totals.map((k) => k.name),
   
@@ -67,7 +65,7 @@ const options = {
     return (
       <>
       
-        <Doughnut width={400} height={300} data={data} options={options} />
+        <Doughnut data={data} options={options} />
         
       </>
     );

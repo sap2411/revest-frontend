@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import AccountForm from './components/AccountForm.js';
 import EditAccount from './components/EditAccount.js';
 import Navbar from './components/Navbar.js';
@@ -61,7 +61,7 @@ class App extends Component {
         <Route exact path="/Home" render={props => <Home {...props}  user={this.state.auth.user} />} />
         <Route exact path="/create-account" component={props => <AccountForm {...props} user={this.state.auth.user} loggedIn={this.login} />} />
         <Route exact path="/edit-account" component={props => <EditAccount {...props} handleLogOut={this.logout} user={this.state.auth.user} loggedIn={this.login} />} />
-        <Route exact path="/statistics" component={props => <Statistics {...props} user={this.state.auth.user}  />} />
+        <Route exact path="/statistics" component={props => <Statistics {...props}  />} />
         <Route exact path="/resources" component={props => <Resources {...props} user={this.state.auth.user}  />} />
         {/* <Route exact path="/edit-account" component={() => <AccountForm  user={this.state.user} />} /> */}
       </div>

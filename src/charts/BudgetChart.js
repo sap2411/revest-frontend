@@ -2,8 +2,6 @@ import React from 'react';
 import { Doughnut } from "react-chartjs-2";
 
 const options = {
-  maintainAspectRatio: false,
-  responsive: false,
 
   legend: {
     position: "left",
@@ -61,7 +59,7 @@ const options = {
     return (
       <>
         
-        <Doughnut width={400} height={300} data={data} options={options} />
+        <Doughnut data={data} options={options} />
         <br/><br/><br/>
         </>
     );

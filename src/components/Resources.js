@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, CardDeck, CardColumns } from "react-bootstrap";
+import { Card, CardDeck } from "react-bootstrap";
 
 
-const Resources = (props) => {
+const Resources = () => {
     const newTab = (url) => { 
         window.open( 
           url, "_blank"); 
@@ -22,7 +22,7 @@ const Resources = (props) => {
         <h5>Simplicity:</h5><p>Investing in the Vanguard Total Stock Market Index Fund (VTSAX) for example, is a way to make a relatively safe investment, and let it grow without much work, fees, or complication. Also, if you invest through a Roth IRA, that investment will already have income tax taken out, so you won't have to pay that tax when you are over 60.</p>
         <br/>
         <h2><u>Featured Video:</u></h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/zR64-Ea_r5U" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <iframe title="Investing" width="560" height="315" src="https://www.youtube.com/embed/zR64-Ea_r5U" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         <br/><br/>
         <div className="ui two column  grid" >
             <div className="col">
@@ -108,6 +108,5 @@ const Resources = (props) => {
     </div>
     );
 }
-{/* <img width="200" height="130" onClick={() => newTab("")} alt='' src='' /> */}
 
 export default Resources

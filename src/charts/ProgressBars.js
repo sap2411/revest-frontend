@@ -4,7 +4,7 @@ import { ProgressBar} from "react-bootstrap"
 export default function ProgressBars({ surplus, income, totals, budgets }) {
   
     const calculateAmounts = () => {
-        let exp = budgets[1].transactions.filter((tran) => tran.transaction_type == "Food and Drink")
+        let exp = budgets[1].transactions.filter((tran) => tran.transaction_type === "Food and Drink")
         return exp.reduce((acc, tran) => acc + tran.amount, 0)
     }
 
@@ -17,11 +17,13 @@ export default function ProgressBars({ surplus, income, totals, budgets }) {
 
     }
 
+    const leftover = (surplus < 0 ? 0 : surplus)
+
     let fixed = calculateFixed()
     let flexible = calculateFlexible()
     let fixedPercent = Math.round((fixed/(income*0.5))*100)
     let flexiblePercent = Math.round((flexible/(income*0.3))*100)
-    let savingsPercent = Math.round((surplus/(income*0.2))*100)
+    let savingsPercent = Math.round((leftover/(income*0.2))*100)
 
     return (
       <>{totals.length > 1 ?
@@ -34,7 +36,7 @@ export default function ProgressBars({ surplus, income, totals, budgets }) {
       <h5>Flexible Expenses - ${flexible} out of ${(income * 0.3)}</h5>
       <ProgressBar now={flexiblePercent} style={{width: '54%'}} variant={flexiblePercent < 100 ? "success" : "danger"} animated label={`${flexiblePercent}%`} />
       <br/>
-      <h5>Leftover Savings - ${surplus} out of ${(income * 0.2)}</h5>
+      <h5>Leftover Savings - ${leftover} out of ${(income * 0.2)}</h5>
       <ProgressBar now={savingsPercent} style={{width: '36%'}} variant={savingsPercent < 100 ? "warning" : "success"}  animated label={`${savingsPercent}%`} />
 
         </>
