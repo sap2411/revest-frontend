@@ -5,9 +5,10 @@ import BudgetChart from '../charts/BudgetChart.js'
 import SpentChart from '../charts/SpentChart.js'
 import RadarChart from '../charts/RadarChart.js'
 import InvestmentChart from '../charts/InvestmentChart.js';
+import SpendingHabits from './SpendingHabits.js'
 import { Tabs, Tab, Button, Card, CardGroup } from "react-bootstrap";
 import ProgressBars from '../charts/ProgressBars.js';
-
+import EditBudgets from './EditBudgets.js'
 
 
 
@@ -70,7 +71,6 @@ class Statistics extends Component{
         })
         .catch(console.log)
     }
-
     
 
     getUserTransactions = (budgets) => {
@@ -149,8 +149,8 @@ class Statistics extends Component{
             <Button onClick={() => {this.getTransactions()}} className='text-left' variant="outline-primary">WellsFargo - 1196  <i className="fas fa-sync-alt"></i><br/>Last synced on 7/22/20</Button>{" "}
             <Button className='text-left' variant="outline-primary">+</Button>
             <br/><br/>
-        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
-            <Tab eventKey="home" title="Budget and Investment Breakdown">
+        <Tabs defaultActiveKey="home" onClick={this.getBudgets}>
+            <Tab eventKey="home" title="Budget and Investment Breakdown" >
                 <br/>
                 {this.state.investment ? <h3 >My Spending Snapshot</h3> : <h1 className="display-4">Compiling data...</h1>}
                 {this.state.totals.length > 0 ? 
@@ -183,14 +183,11 @@ class Statistics extends Component{
                 </div>) 
                 : null}
             </Tab>
-            <Tab eventKey="highlights" title="Spending Highlights">
-                
-            </Tab>
-            <Tab eventKey="budgets" title="Modify Budgets">
-                
-            </Tab>
-            <Tab eventKey="clarify" title="Clarify Transactions">
-                  
+            {/* <Tab eventKey="habits" title="Spending Habits">
+                <SpendingHabits bugets={this.state.budgets}/>
+            </Tab> */}
+            <Tab eventKey="budgets" title="Modify Budgets and Transactions">
+                <EditBudgets getBudgets={this.getBudgets} budgets={this.state.budgets} />
             </Tab>
         </Tabs>
      

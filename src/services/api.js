@@ -91,6 +91,32 @@ const fetchBudgets = () => {
   }).then(res => res.json());
 }
 
+const updateBudget = (budgetData, budgetId) => {
+  const options = {
+      method: 'PATCH',
+      headers: headers(),
+      body: JSON.stringify({budget: budgetData})
+  }
+  return fetch(`${API_ROOT}/budgets/`+ budgetId, options)
+  .then(resp => {
+      console.log("updated", resp)
+      return resp.json()
+  });
+}
+
+const updateTransaction = (transactionData, transactionId) => {
+  const options = {
+      method: 'PATCH',
+      headers: headers(),
+      body: JSON.stringify({transaction: transactionData})
+  }
+  return fetch(`${API_ROOT}/transactions/`+ transactionId, options)
+  .then(resp => {
+      console.log("updated", resp)
+      return resp.json()
+  });
+}
+
 
 export const api = {
     auth: {
@@ -102,6 +128,8 @@ export const api = {
       fetchCreatedTransactions,
       fetchBudgets,
       updateUser,
-      deleteUser
+      deleteUser,
+      updateBudget,
+      updateTransaction
     },
 };
