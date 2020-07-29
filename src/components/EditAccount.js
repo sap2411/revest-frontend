@@ -90,7 +90,7 @@ class EditAccount extends Component{
                     <Modal.Header closeButton>
                     <Modal.Title>Delete Account</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Are you sure you wish to delete your account?</Modal.Body>
+                    <Modal.Body>Are you sure you wish to delete your account? All stored data will be deleted.</Modal.Body>
                     <Modal.Footer>
                     <Button variant="secondary" onClick={this.handleClose}>
                         Cancle

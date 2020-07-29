@@ -112,7 +112,6 @@ const updateTransaction = (transactionData, transactionId) => {
   }
   return fetch(`${API_ROOT}/transactions/`+ transactionId, options)
   .then(resp => {
-      console.log("updated", resp)
       return resp.json()
   });
 }

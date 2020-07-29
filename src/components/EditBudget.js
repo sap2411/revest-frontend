@@ -33,7 +33,7 @@ export default class EditBudget extends Component{
     renderTransactions = () => {
         return this.props.budget.transactions.map(transaction => {
             return(
-                <EditTransaction getBudgets={this.props.getBudgets} budgets={this.props.budgets} budget={this.props.budget} transaction={transaction}/>
+                <EditTransaction key={transaction.id} getBudgets={this.props.getBudgets} budgets={this.props.budgets} budget={this.props.budget} transaction={transaction}/>
             )
         })
     }

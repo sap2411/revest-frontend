@@ -21,7 +21,6 @@ export default class EditTransaction extends Component{
     }
 
     handleFetchResponse = response => {
-        console.log(response)
         if (response.error) {
          } else{
             // Redirect via state update
@@ -31,7 +30,7 @@ export default class EditTransaction extends Component{
 
     renderOptions = () => {
         return this.props.budgets.map(budg => {
-            return <option value={budg.id}>{budg.name}</option>
+            return <option key={budg.id} value={budg.id}>{budg.name}</option>
         })
     }
 
