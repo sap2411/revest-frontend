@@ -104,18 +104,25 @@ class BudgetBreakdown extends Component{
     componentWillUnmount = () => {
         this._isMounted = false
     }
+
+    totalSpent = () => {
+        return Math.round(this.state.totals.reduce((acc, total) => acc + total.amount, 0))
+    }
+
+
     render(){
     return (
         <div >
                 <br/>
-                {this.state.investment ? <h3 >My Spending Snapshot</h3> : <h1 className="display-4">Compiling data...</h1>}
+                {this.state.investment ? <h3 className="darkgreen">My Spending Snapshot</h3> : <h1 className="display-4">Compiling data...</h1>}
                 {this.state.totals.length > 0 ? 
                 (<div >
-                <CardGroup>
+                <CardGroup fluid="lg">
                 <Card bg="white"  >
                 <Card.Body>
-                <SpentChart  totals={this.state.totals} /><br/><br/><br/>
-                <BudgetChart  budgets={this.state.budgets.slice(0,6)}/>
+                <SpentChart  total={this.totalSpent()} totals={this.state.totals} />
+
+                <BudgetChart income={this.props.user.income} budgets={this.state.budgets.slice(0,6)}/>
 
                 </Card.Body>
                 </Card>

@@ -101,14 +101,14 @@ class AccountForm extends Component {
                             <i className="fas fa-user-plus"></i>
                             <span className="d-none d-sm-none d-md-inline"> Create Account</span>
                         </button> 
-                        <h7>Optionally, you can edit this later and <span className="p" onClick={this.handleSkip}><u>skip for now</u></span></h7>
+                        <h7>Optionally, you can edit this later and <span className="p green" onClick={this.handleSkip}><u>skip for now</u></span></h7>
                     </div>
                 </form>
                 :
                 <form className="card-body" >
                     <div className="form-group col-sm text-left">
                         <h3>{!!this.props.user.id ? 'Edit' : 'Create'} Account</h3>
-                        {!!this.props.user.id ? null : <h7>Already have an account? <span className="p" onClick={() => this.props.history.push('/login')}><u>sign in</u></span></h7>}
+                        {!!this.props.user.id ? null : <h7>Already have an account? <span className="p " onClick={() => this.props.history.push('/login')}><u className='green' >sign in</u></span></h7>}
                     </div>
                     <div className="form-group col-sm">
                         <input type="text" className="form-control" placeholder="First Name" name="first_name" value={this.state.first_name} onChange={event => this.handleChange(event)}/>

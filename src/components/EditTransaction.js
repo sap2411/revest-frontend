@@ -41,7 +41,7 @@ export default class EditTransaction extends Component{
             <div >
                 <form className="card-body" onSubmit={event => this.handleSubmit(event)}>
                     <div className="form-group col-sm">
-                        <label className="text-left">Transaction - {this.props.transaction.name}, Date: {this.props.transaction.date}, Amount: ${(this.props.transaction.amount * -1)}</label><br/>
+                        <label className="text-left">Transaction - {this.props.transaction.name} | Date: {this.props.transaction.date.split("T")[0]} | Amount: ${(this.props.transaction.amount * -1)}</label><br/>
                         <label className="text-left">Budget Category</label>{" "}
                         <select id="categories" name="budget_id" onChange={event => this.handleChange(event)}>
                             <option value={this.props.budget.id} >{this.props.budget.category.name}</option>

@@ -1,32 +1,40 @@
 import React from 'react';
-import { Doughnut } from "react-chartjs-2";
-
-const options = {
-
-  legend: {
-    position: "left",
-  },
-  title: {
-    display: true,
-    text: "Your Custom Budgets",
-    fontSize: 20,
-  },
-
-  hover: {
-    mode: "nearest",
-    intersect: false,
-  },
-  tooltips: {
-    custom: false,
-    mode: "nearest",
-    intersect: false,
-  },
-  animation: {
-    duration: 3000
-  }
-};
+import { Chart, Doughnut } from "react-chartjs-2";
   
-  export default function BudgetChart({ budgets }) {
+  export default function BudgetChart({ budgets, income }) {
+
+    const options = {
+      maintainAspectRatio: true,
+      aspectRatio: 1.4,
+      centerText: {
+        display: true,
+        text: `$${income}`,
+        minWindow: 310
+      },
+      legend: {
+        position: "left",
+      },
+      title: {
+        display: true,
+        text: "Your Custom Budgets",
+        fontSize: 20,
+      },
+    
+      hover: {
+        mode: "nearest",
+        intersect: false,
+      },
+      tooltips: {
+        custom: false,
+        mode: "nearest",
+        intersect: false,
+      },
+      animation: {
+        duration: 3000
+      }
+    };
+
+
   
     const data = {
       labels: budgets.map((budget) => budget.category.name),
@@ -45,7 +53,7 @@ const options = {
           ],
           hoverBackgroundColor: [
             "#19ffaf",
-            '#6d05ff',
+            '#a463ff',
             '#ff695c',
             '#ed8eed',
             '#ff0329',
@@ -56,11 +64,12 @@ const options = {
         },
       ],
     };
+
     return (
       <>
         
-        <Doughnut data={data} options={options} />
-        <br/><br/><br/>
+        <Doughnut height={null} width={null} data={data} options={options} />
+        
         </>
     );
   }

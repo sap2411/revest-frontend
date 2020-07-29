@@ -40,7 +40,7 @@ class Login extends React.Component {
           <form className="card-body" onSubmit={this.handleSubmit}>
             <div className="form-group col-sm text-left">
               <h3 >Welcome Back</h3>
-              <p>Don't have an account? <span className="p" onClick={() => this.props.history.push('/create-account')}><u>sign up</u></span></p>
+              <p>Don't have an account? <span className="p green" onClick={() => this.props.history.push('/create-account')}><u>sign up</u></span></p>
             </div>
             <div className="form-group col-sm">
               <input type='email' className="form-control" 

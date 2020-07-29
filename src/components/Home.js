@@ -27,27 +27,6 @@ class Home extends Component {
     }
 
 
-    // getBudgets = () => {
-    //     api.auth.fetchBudgets()
-    //     .then(res => {
-    //         this.setState({
-    //             budgets: [...res]
-    //         }, this.calculateTotals)
-    //     })
-    //     .catch(console.log)
-    // }
-
-    // getUserTransactions = () => {
-    //     api.auth.fetchCreatedTransactions()
-    //     .then(resp => {
-    //         console.log(resp)
-    //         this.setState({
-    //             transactions: [...resp]
-    //         })
-    //     })
-    //     .catch(console.log)
-    // }    
-
     render() {
         return (
             <div>
@@ -56,7 +35,7 @@ class Home extends Component {
                     <h1 className="display-4">Let's grab your latest bank data</h1>
                     <p className="lead">Click the button below to update your transaction data for the last 31 days</p>
                     <hr className="my-4"/>
-                    <button className="btn btn-block btn-success p" onClick={() => {this.getTransactions()}}>Refresh Data</button> 
+                    <button className="btn  btn-success p" onClick={() => {this.getTransactions()}}>Refresh Data</button> 
                 </div>
                     : 
                 <div className="jumbotron rounded-lg col-6 py-5 mt-5 bg-white mx-auto text-center" >

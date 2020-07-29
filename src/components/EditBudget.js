@@ -27,7 +27,7 @@ export default class EditBudget extends Component{
         if (response.error) {
          } else{
             // Redirect via state update
-            this.setState({button: 'Updated'})
+            this.setState({button: 'Updated'}, () => {this.props.getBudgets()})
         }  
     }
     renderTransactions = () => {

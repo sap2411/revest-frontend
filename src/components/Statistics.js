@@ -24,7 +24,7 @@ class Statistics extends Component{
         .then(res => {
             if(this._isMounted){
                 this.setState({
-                    budgets: res
+                    budgets: [...(res.sort(function(a, b){return a.id-b.id}))]
                 })
             }
         })
@@ -45,8 +45,8 @@ class Statistics extends Component{
     render(){
     return (
         <div className="jumbotron rounded-lg col-10 py-2 mt-2 bg-white mx-auto " >
-            <Button onClick={() => {this.getTransactions()}} className='text-left' variant="outline-primary">WellsFargo - 1196  <i className="fas fa-sync-alt"></i><br/>Last synced on 7/22/20</Button>{" "}
-            <Button className='text-left' variant="outline-primary">+</Button>
+            <Button onClick={() => {this.getTransactions()}} className='text-left' variant="outline-primary">WellsFargo - 1196  <i className="fas fa-sync-alt"></i><br/>Last synced on 7/30/20</Button>{" "}
+            {/* <Button className='text-left' variant="outline-primary">+</Button> */}
             <br/><br/>
             <Tabs defaultActiveKey="home" >
                 <Tab eventKey="home" title="Budget and Investment Breakdown" >

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import { Card, CardDeck } from "react-bootstrap";
 
@@ -8,22 +8,34 @@ const About = (props) => {
     return (
         <div>
         <div className="jumbotron rounded-lg col-10 py-1 mt-5 bg-white mx-auto text-center">
-            <h1 className="display-4"><i className="fas fa-money-bill-wave"></i> Revest </h1>
-            <h5>Personal finance and investng doesn't have to be intimidating. That's why we are here to introduce these concepts to you in a personalized way</h5>
+            <div className="container text-left">
+                <img width={500} src="laptop.png" alt="wealth growth" className="float-right"></img>
+                <h1>Personal finance and investng doesn't have to be complicated.</h1>
+                <h3>We can help you get started with a personalized plan and resources to fit your needs.</h3>
+                <br/>
+                <h5>Our tools and resources are here to guide the beginner investor through their investment journey.</h5>
+                {!!props.user.id ? <><br/><br/><br/></> :
+                <div className="text-left"><br/><Link exact to="/create-account" title="Create Account">
+                <button className="btn btn-success btn-lg mx-4" type="button">
+                    <i className="fas fa-user-plus"></i>
+                    <span className="d-none d-sm-none d-md-inline"> Let's Get Started!</span>
+                </button>
+            </Link></div>}
+            </div>
+            
             <hr className="my-4"/>
 
-            
-       
-        <Card bg="info"  text="white">
+        {/* <Card bg="info"  text="white">
             <Card.Img variant="top" src="coin.jpg"  />
             <Card.Body>
             <Card.Text>
             Track your spending and generate a personalized introduction to investing in 3 steps:
             </Card.Text>
             </Card.Body>
-        </Card><br/>
+        </Card> */}
+        <br/>
         <CardDeck>
-        <Card bg="info" text="white" style={{ width: '18rem' }}>
+        <Card bg="success" text="white" style={{ width: '18rem' }}>
         <Card.Img variant="top" src="bank.png" />
             <Card.Body>
                 <Card.Text>
@@ -31,7 +43,7 @@ const About = (props) => {
                 </Card.Text>
             </Card.Body>
         </Card>
-        <Card bg="info" text="white" style={{ width: '18rem' }}>
+        <Card bg="success" text="white" style={{ width: '18rem' }}>
         <Card.Img variant="top" src="pie.png" />
             <Card.Body>
                 <Card.Text>
@@ -39,7 +51,7 @@ const About = (props) => {
                 </Card.Text>
             </Card.Body>
         </Card>
-        <Card bg="info" text="white" style={{ width: '18rem' }}>
+        <Card bg="success" text="white" style={{ width: '18rem' }}>
         <Card.Img variant="top" src="investment.png" />
             <Card.Body>
                 <Card.Text>
@@ -49,13 +61,7 @@ const About = (props) => {
         </Card>
         </CardDeck>
                 </div>
-                {!!props.user.id ? null :
-                <div className="text-center"><Link exact to="/create-account" title="Create Account">
-                <button className="btn btn-primary btn-lg mx-4" type="button">
-                    <i className="fas fa-user-plus"></i>
-                    <span className="d-none d-sm-none d-md-inline"> Let's Get Started!</span>
-                </button>
-            </Link> <br/><br/></div>}
+                
         </div>
     )
 }

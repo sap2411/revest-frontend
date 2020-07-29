@@ -67,7 +67,7 @@ class EditAccount extends Component{
                 <form className="card-body" onSubmit={event => this.handleSubmit(event)}>
                     <div className="form-group col-sm text-left">
                         <h3>Edit Account </h3>
-                        <h7>Or, <span className="p" onClick={this.handleClick}><u>delete your account</u></span></h7>
+                        <h7>Or, <span className="p green" onClick={this.handleClick}><u>delete your account</u></span></h7>
                     </div>
                     <div className="form-group col-sm">
                         <label className="text-left">Monthly net income</label>
@@ -95,7 +95,7 @@ class EditAccount extends Component{
                     <Button variant="secondary" onClick={this.handleClose}>
                         Cancle
                     </Button>
-                    <Button variant="primary" onClick={this.handleDelete}>
+                    <Button variant="danger" onClick={this.handleDelete}>
                         Yes, Delete
                     </Button>
                     </Modal.Footer>

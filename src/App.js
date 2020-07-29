@@ -63,7 +63,6 @@ class App extends Component {
         <Route exact path="/edit-account" component={props => <EditAccount {...props} handleLogOut={this.logout} user={this.state.auth.user} loggedIn={this.login} />} />
         <Route exact path="/statistics" component={props => <Statistics {...props}  />} />
         <Route exact path="/resources" component={props => <Resources {...props} user={this.state.auth.user}  />} />
-        {/* <Route exact path="/edit-account" component={() => <AccountForm  user={this.state.user} />} /> */}
       </div>
     </Router>
     );

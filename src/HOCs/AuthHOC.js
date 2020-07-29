@@ -17,7 +17,7 @@ const AuthHOC = WrappedComponent => {
     checkLogin = () => {
       if (!localStorage.getItem("token")) {
         console.log("no token")
-        this.props.history.push("/login")
+        this.props.history.push("/create-account")
       } else {
         api.auth.getCurrentUser().then((resp) => {
           if (resp.error) {

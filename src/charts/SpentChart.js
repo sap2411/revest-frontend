@@ -1,35 +1,58 @@
 import React from 'react';
-import { Doughnut } from "react-chartjs-2";
+import { Chart, Doughnut } from "react-chartjs-2";
 
-const options = {
+  export default function SpentChart({ totals, total }) {
 
+    const options = {
+      maintainAspectRatio: true,
+      aspectRatio: 1.4,
+      centerText: {
+        display: true,
+        text: `$${total}`,
+        minWindow: 310
+      },
+      legend: {
+        position: "left",
+      },
+      title: {
+        display: true,
+        text: "Your Spending",
+        fontSize: 20,
+      },
+    
+      hover: {
+        mode: "nearest",
+        intersect: false,
+      },
+      tooltips: {
+        custom: false,
+        mode: "nearest",
+        intersect: false,
+      },
+      animation: {
+        duration: 3000
+      }
+    };
 
+    const drawInnerText = (chart) => {
+      if (chart.chart.width > chart.config.options.centerText.minWindow){
+      var width = chart.chart.width,
+          height = chart.chart.height,
+          ctx = chart.chart.ctx;
   
-  legend: {
-    position: "left",
-  },
-  title: {
-    display: true,
-    text: "Your Spending",
-    fontSize: 20,
-  },
-
-  hover: {
-    mode: "nearest",
-    intersect: false,
-  },
-  tooltips: {
-    custom: false,
-    mode: "nearest",
-    intersect: false,
-  },
-  animation: {
-    duration: 3000
-  }
-};
-
+      ctx.restore();
+      var fontSize = (width / 250).toFixed(2);
+      ctx.font = fontSize + "em sans-serif";
+      ctx.textBaseline = "middle";
   
-  export default function SpentChart({ totals }) {
+      var text = chart.config.options.centerText.text,
+          textX = Math.round(((width - ctx.measureText(text).width) / 2)+110),
+          textY = ((height / 2)+ 20);
+  
+      ctx.fillText(text, textX, textY);
+      ctx.save();}
+    }
+
     const data = {
       labels: totals.map((k) => k.name),
   
@@ -49,7 +72,7 @@ const options = {
           ],
           hoverBackgroundColor: [
             "#19ffaf",
-            '#6d05ff',
+            '#a463ff',
             '#ff695c',
             '#ed8eed',
             '#ff0329',
@@ -60,12 +83,23 @@ const options = {
           ],
           data: totals.map((k) => k.amount),
         },
-      ],
+      ]
     };
+
+    Chart.Chart.pluginService.register({
+      beforeDraw: function (chart) {                    
+          if (chart.config.options.centerText !== null &&
+              typeof chart.config.options.centerText !== 'undefined' &&
+              chart.config.options.centerText) {
+              drawInnerText(chart);
+          }
+      },
+    });
+
     return (
       <>
-      
-        <Doughnut data={data} options={options} />
+        
+        <Doughnut height={null} width={null} data={data} options={options} />
         
       </>
     );

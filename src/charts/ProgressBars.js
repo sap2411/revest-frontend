@@ -30,7 +30,7 @@ export default function ProgressBars({ surplus, income, totals, budgets }) {
         <>
         <h3>The 50%/30%/20% Breakdown:</h3><br/>
       <h5>Fixed Expenses - ${fixed} out of ${(income *0.5)}</h5>
-        
+
         <ProgressBar style={{width: '90%'}} now={fixedPercent} variant={fixedPercent < 100 ? "success" : "danger"}  animated label={`${fixedPercent}%`} />
         <br/>
       <h5>Flexible Expenses - ${flexible} out of ${(income * 0.3)}</h5>
