@@ -71,7 +71,7 @@ Contributions are welcome, submit a pull request!
 
 * **Steven Parsons** - [GitHub](https://github.com/sap24471) | [LinkedIn](https://www.linkedin.com/in/steven-parsons-716654134/)
 
-* **Amy Yang** - [LinkedIn](https://www.linkedin.com/in/amyyang0110/)
+* **UX/UI - Amy Yang** - [LinkedIn](https://www.linkedin.com/in/amyyang0110/)
 
 ## License
 
