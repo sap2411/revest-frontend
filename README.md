@@ -67,9 +67,11 @@ Clone back-end repo, aquire an api secret key from Plaid and use it on line 10 o
 
 Contributions are welcome, submit a pull request!
 
-## Author
+## Authors
 
-* **Steven Parsons** - [GitHub](https://github.com/sap24471)
+* **Steven Parsons** - [GitHub](https://github.com/sap24471) | [LinkedIn](https://www.linkedin.com/in/steven-parsons-716654134/)
+
+* **Amy Yang** - [LinkedIn](https://www.linkedin.com/in/amyyang0110/)
 
 ## License
 
