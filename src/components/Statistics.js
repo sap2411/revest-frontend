@@ -35,9 +35,10 @@ class Statistics extends Component{
 
     getTransactions = (access_token = {}) => {
         this._isMounted = true;
+        trackPromise(
         api.auth.fetchTransactions(access_token)
         .then(this.getBudgets)
-        .catch(console.log)
+        .catch(console.log))
     }
 
     componentWillUnmount = () => {

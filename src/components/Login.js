@@ -1,5 +1,6 @@
 import React from 'react';
 import { api } from '../services/api';
+import { trackPromise } from 'react-promise-tracker'
 
 class Login extends React.Component {
   constructor() {
@@ -20,6 +21,7 @@ class Login extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    trackPromise(
     api.auth.login({user: this.state.fields}).then(res => {
       if (!res.message) {
         localStorage.setItem("token", res.jwt);
@@ -30,7 +32,7 @@ class Login extends React.Component {
       } else {
         this.setState({ error: true });
       }
-    });
+    }));
   };
 
   render() {

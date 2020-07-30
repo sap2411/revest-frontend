@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Redirect } from "react-router-dom";
 import { api } from '../services/api';
+import { trackPromise } from 'react-promise-tracker'
 
 class AccountForm extends Component {
     constructor(props){
@@ -21,8 +22,9 @@ class AccountForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
+        trackPromise(
         api.auth.createNewUser(this.state)
-        .then(this.handleFetchResponse)
+        .then(this.handleFetchResponse))
         // this.createNewUser(this.state)
     }
 
