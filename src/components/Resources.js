@@ -16,7 +16,7 @@ const Resources = () => {
         <h3>Why invest in an index fund?</h3>
         <h5>Fees:</h5><p>They have low fees partially due to their simplicity, such as a mutual fund which has higher fees and the added overhead of the fund management.</p>
 
-        <h5>Reliability:</h5><p>Index funds such as the SMP 500 have historic returns and studies show that they lead to higher returns on average, compared to investing in individual stocks on your own. They are also more diversified, like the SMP 50 which tracks the top 500 stocks. This prevents one stock dropping from heavily affecting your portfolio.</p>
+        <h5>Reliability:</h5><p>Index funds such as the SMP 500 have historic returns and studies show that they lead to higher returns on average, compared to investing in individual stocks on your own. They are also more diversified, like the SMP 500 which tracks the top 500 stocks. This prevents one stock dropping from heavily affecting your portfolio.</p>
 
         <h5>Simplicity:</h5><p>Investing in the Vanguard Total Stock Market Index Fund (VTSAX) for example, is a way to make a relatively safe investment, and let it grow without much work, fees, or complication. Also, if you invest through a Roth IRA, that investment will already have income tax taken out, so you won't have to pay that tax when you are over 60.</p>
         <div className="float-left">

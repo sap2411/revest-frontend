@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProgressBar} from "react-bootstrap"
+import { ProgressBar, OverlayTrigger, Popover} from "react-bootstrap"
 
 export default function ProgressBars({ surplus, income, totals, budgets }) {
   
@@ -27,7 +27,20 @@ export default function ProgressBars({ surplus, income, totals, budgets }) {
     return (
       <>{totals.length > 1 &&
         <>
-          <h3>The 50/30/20 Breakdown:</h3><br/>
+          <OverlayTrigger
+          key={'top'}
+          placement={'top'}
+          overlay={
+            <Popover id={`popover-positioned-top`}>
+              <Popover.Title as="h3">{`50/30/20`}</Popover.Title>
+              <Popover.Content>
+              The goal is for 50% of your income to go to fixed expenses (ex. home, groceries, transportation, and insurance) while 30% of your income goes towards the rest of your expenses, i.e. flexible expenses. The remaining 20% should go towards savings.
+              </Popover.Content>
+            </Popover>
+          }
+    >
+      <h4>The 50/30/20 Breakdown <i class="fas fa-info-circle"></i></h4>
+    </OverlayTrigger><br/>
           <h5>Fixed Expenses - ${fixed} out of ${(income *0.5)}</h5>
           <ProgressBar style={{width: '90%'}} now={fixedPercent} variant={fixedPercent < 100 ? "success" : "danger"}  animated label={`${fixedPercent}%`} />
           <br/>
