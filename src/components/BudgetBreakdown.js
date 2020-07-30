@@ -58,8 +58,8 @@ class BudgetBreakdown extends Component{
 
     checkIncome = (obj) => {
         let total = Math.round(this.props.user.income-((obj.totals.reduce ((acc, spent) => acc + spent.amount, 0))))
-        let investment = this.calculateInvestment(obj.totals, this.state.budgets[1].amount)
-        let excess = Math.round(investment * -1)
+        let investment = this.calculateInvestment(obj.totals)
+        let excess = Math.abs(investment * -1)
         let investmentData = this.calculateReturn((excess))
         this.setState({
             incomeSurplus: total,
@@ -68,15 +68,28 @@ class BudgetBreakdown extends Component{
             diff: [...obj.diff],
             yearlyReturn: [...investmentData.yearlyReturn],
             ages: [...investmentData.ages],
-            totalReturn: investmentData.totalReturn
+            totalReturn: (investmentData.totalReturn.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
         },()=> {console.log(this.state)})
     }
 
-    calculateInvestment = (totals, food) => {
+    calculateInvestment = (totals) => {
         let investment = 0
-        investment = (((totals[4].amount + (totals[1].amount - food) + totals[5].amount + totals[6].amount +  totals[8].amount)-(this.props.user.income * 0.3)) *-1)
-        if (investment === 0) investment = -200
-        return investment
+        let totalOverspent = (this.totalSpent(totals) - this.props.user.income)
+        investment = (((totals[4].amount + (totals[1].amount - this.state.budgets[1].amount) + totals[5].amount + totals[6].amount +  totals[8].amount)-(this.props.user.income * 0.3)))
+        console.log(investment, totalOverspent)
+
+        if (investment > 0){
+            investment = investment 
+            if (totalOverspent > 0) investment = (investment + totalOverspent) /2
+            if (investment > (this.props.user.income * 0.14)) investment = (this.props.user.income * 0.14)
+        }else{
+            investment = investment 
+            totalOverspent = totalOverspent 
+            if (totalOverspent < 0) investment = (totalOverspent + (this.props.user.income * 0.2))
+            if (investment > (this.props.user.income * -0.14)) investment = (this.props.user.income * -0.14)
+        }
+
+        return (Math.ceil(investment / 10) * 10);
     }
 
     calculateReturn = (num) => {
@@ -84,14 +97,14 @@ class BudgetBreakdown extends Component{
         let arr = [num]
         let ageArr = []
         for(let i = this.props.user.age; i < 60; i++){
-            total = (Math.round(total + (total*0.07)) + num)
+            total = (Math.round(total + (total*0.07)) + (num*12))
             ageArr.push(i)
             arr.push(total)
         }
         let obj = {
             yearlyReturn: [...arr],
             ages: [...ageArr, 60],
-            totalReturn: total
+            totalReturn: Math.round(total)
         }
         return obj
     }
@@ -105,8 +118,8 @@ class BudgetBreakdown extends Component{
         this._isMounted = false
     }
 
-    totalSpent = () => {
-        return Math.round(this.state.totals.reduce((acc, total) => acc + total.amount, 0))
+    totalSpent = (totals = this.state.totals) => {
+        return Math.round(totals.reduce((acc, total) => acc + total.amount, 0))
     }
 
 
@@ -114,7 +127,7 @@ class BudgetBreakdown extends Component{
     return (
         <div >
                 <br/>
-                {this.state.investment ? <h3 className="darkgreen">My Spending Snapshot</h3> : <h1 className="display-4">Compiling data...</h1>}
+                {this.state.investment ? <h3 className="darkgreen">My Spending Snapshot</h3> : null}
                 {this.state.totals.length > 0 ? 
                 (<div >
                 <CardGroup fluid="lg">
@@ -138,7 +151,7 @@ class BudgetBreakdown extends Component{
 
                 <Card bg="white"  >
                 <Card.Body>
-                <InvestmentChart handleClick={this.handleClick} totalReturn={this.state.totalReturn} excess={(Math.round(this.state.investment * -1))} yearlyReturn={this.state.yearlyReturn} ages={this.state.ages} />
+                <InvestmentChart handleClick={this.handleClick} totalReturn={this.state.totalReturn} excess={(Math.round(this.state.investment))} yearlyReturn={this.state.yearlyReturn} ages={this.state.ages} />
    
                 </Card.Body>
                 </Card>

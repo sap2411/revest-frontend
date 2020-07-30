@@ -11,6 +11,7 @@ import Plaid from './components/Plaid.js';
 import Statistics from './components/Statistics.js';
 import Resources from './components/Resources.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { trackPromise } from 'react-promise-tracker';
 
 
 import './App.css';

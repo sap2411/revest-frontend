@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardDeck } from "react-bootstrap";
 
 
+
 const Resources = () => {
     const newTab = (url) => { 
         window.open( 

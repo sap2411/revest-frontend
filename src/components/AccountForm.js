@@ -40,7 +40,7 @@ class AccountForm extends Component {
     handleSkip = () => {
         this.setState({
             age: 21,
-            income: 50000
+            income: 3000
         }, () => {
             api.auth.createNewUser(this.state)
             .then(this.handleFetchResponse)

@@ -68,7 +68,7 @@ import { Chart, Doughnut } from "react-chartjs-2";
             '#e6c78e',
             '#55a7e6',
             '#fff821',
-            '#74e3bc'
+            '#3d3d3b'
           ],
           hoverBackgroundColor: [
             "#19ffaf",
@@ -79,7 +79,7 @@ import { Chart, Doughnut } from "react-chartjs-2";
             '#fcdca2',
             '#63b4f2',
             '#fcf747',
-            '#94f7c7'
+            '#0d0d0d'
           ],
           data: totals.map((k) => k.amount),
         },

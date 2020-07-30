@@ -7,7 +7,7 @@ const Navbar = ({ user, handleLogOut }) => {
         <header className="navbar navbar-expand navbar-light bg-light shadow flex-column flex-md-row bd-navbar">
             <nav className="collapse navbar-collapse" >
                 <NavLink exact to="/" className="navbar-brand" title="Revest">
-                    <img hieght={50} width={50} src='revest.png' alt="woops" />
+                    <img hieght={40} width={40} src='revest.png' alt="woops" />
                 {/* <i className="fas fa-money-bill-wave"></i>
                     <span className="d-none d-sm-none d-md-inline p"> Revest </span> */}
                 </NavLink>

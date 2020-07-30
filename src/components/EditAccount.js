@@ -81,7 +81,7 @@ class EditAccount extends Component{
                     <div className="form-group col-sm">
                         <button type="submit"  className="btn btn-block btn-success p">
                             <i className="fas fa-user-edit"></i> 
-                            <span className="d-none d-sm-none d-md-inline"> Edit Account</span>
+                            <span className="d-none d-sm-none d-md-inline"> Update Account</span>
                         </button> 
                     </div>
                 </form>

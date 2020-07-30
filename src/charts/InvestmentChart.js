@@ -56,14 +56,17 @@ import { Bar } from "react-chartjs-2";
       ],
     };
 
-
-
+    const adjustedInvestment = () => {
+      if (excess > 0) return `exceeded several budgets. After calculating any excess spending and factoring in any surpluses, we have identified an investible excess of roughly $${excess} .`
+      return `stayed very close to your budgets! After calculating any excess spending and savings surplus, we have identified an investible excess of roughly $${(-1* excess)}.`
+    }
+ 
     return (
       <div>
         <h3 className="darkgreen">Let’s Put Your Money to Work</h3>
-        <h5><br/>We have determined that this month you have spent over ${excess} dollars in excess across several budgets related to flexible spending. If you were to cut back and invest most of that excess in a low risk index fund each month, you could see it grow to a ${totalReturn} dollar return by the time you turn 60.</h5>
+        <h5><br/>We have determined that this month you have {adjustedInvestment()} If you were to cut back and invest that excess in a low risk index fund each month, you could see it grow to a ${totalReturn} return by the time you turn 60.</h5>
         <Bar width={400} height={200}  data={data} options={options} /><br/>
-        <h5>Ready to create an investment plan? For more information on this graph - click below! We’ve also got your covered with our handpicked guides and resources! </h5>
+        <h5>Ready to learn more about investing? For more information on this graph - click below! We’ve also got you covered with our handpicked guides and resources! </h5>
         <button className="btn btn-success p" onClick={handleClick}>Investment Resources</button>
         
         

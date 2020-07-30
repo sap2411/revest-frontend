@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Plaid from './Plaid.js';
 import AuthHOC from '../HOCs/AuthHOC.js';
 import { api } from '../services/api';
+import { trackPromise } from 'react-promise-tracker'
 
 class Home extends Component {
     constructor(props){
@@ -13,17 +14,19 @@ class Home extends Component {
     }
 
     onSuccess = (token, metadata) => {
+        trackPromise(
         api.auth.plaidAuth({token: token})
         .then(resp => {
             this.getTransactions({access_token: resp.access_token})
         })
-        .catch(console.log);
+        .catch(console.log));
     };
 
     getTransactions = (access_token = {}) => {
+        trackPromise(
         api.auth.fetchTransactions(access_token)
         .then(() => this.props.history.push('/statistics'))
-        .catch(console.log)
+        .catch(console.log))
     }
 
 

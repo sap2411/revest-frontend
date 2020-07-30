@@ -14,7 +14,9 @@
     "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.1",
     "react-iframe": "^1.8.0",
+    "react-loader-spinner": "^3.1.14",
     "react-plaid-link": "^2.2.3",
+    "react-promise-tracker": "^2.1.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"

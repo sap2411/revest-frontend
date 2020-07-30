@@ -2,15 +2,12 @@ import React from 'react';
 import { Radar } from "react-chartjs-2";
 
 const options = {
+    maintainAspectRatio: true,
+    aspectRatio: 1.2,
     title: {
       display: true,
       text: "How it Compairs",
       fontSize: 20,
-    },
-    scale: {
-        ticks: {
-            max: 1600
-        }
     },
     animation: {
       duration: 3000
@@ -38,7 +35,7 @@ const options = {
     return (
       <>
       
-        <Radar width={400} height={300} data={data} options={options} />
+        <Radar height={null} width={null} data={data} options={options} />
         
       </>
     );

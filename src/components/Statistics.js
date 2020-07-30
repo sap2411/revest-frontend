@@ -4,6 +4,7 @@ import { api } from '../services/api';
 import { Tabs, Tab, Button } from "react-bootstrap";
 import EditBudgets from './EditBudgets.js'
 import BudgetBreakdown from './BudgetBreakdown.js'
+import { trackPromise } from 'react-promise-tracker'
 
 class Statistics extends Component{
     state = {
@@ -20,6 +21,7 @@ class Statistics extends Component{
 
     getBudgets = () => {
         this._isMounted = true;
+        trackPromise(
         api.auth.fetchBudgets()
         .then(res => {
             if(this._isMounted){
@@ -28,7 +30,7 @@ class Statistics extends Component{
                 })
             }
         })
-        .catch(console.log)
+        .catch(console.log))
     }
 
     getTransactions = (access_token = {}) => {
@@ -50,7 +52,7 @@ class Statistics extends Component{
             <br/><br/>
             <Tabs defaultActiveKey="home" >
                 <Tab eventKey="home" title="Budget and Investment Breakdown" >
-                    {!!this.state.budgets[0] ? <BudgetBreakdown history={this.props.history} budgets={this.state.budgets} user={this.props.user} /> : <h1 className="display-4">Compiling data...</h1>}
+                    {!!this.state.budgets[0] ? <BudgetBreakdown history={this.props.history} budgets={this.state.budgets} user={this.props.user} /> : null}
                 </Tab>
                 {/* <Tab eventKey="habits" title="Spending Habits">
                     <SpendingHabits bugets={this.state.budgets}/>
