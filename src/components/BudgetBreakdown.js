@@ -6,8 +6,6 @@ import InvestmentChart from '../charts/InvestmentChart.js';
 import { Card, CardGroup } from "react-bootstrap";
 import ProgressBars from '../charts/ProgressBars.js';
 
-
-
 class BudgetBreakdown extends Component{
     state = {
         budgets:this.props.budgets,
@@ -36,6 +34,7 @@ class BudgetBreakdown extends Component{
     }
 
     calculateTotals = () => {
+        // reduce the amount of times setState is called by passing data through
         let arr2 = []
         let arr = this.state.budgets.map(budget => {
             let obj = {}
@@ -50,8 +49,8 @@ class BudgetBreakdown extends Component{
             return obj
         })
         let newState = {
-                totals: [...arr],
-                diff: [...arr2]
+            totals: [...arr],
+            diff: [...arr2]
         }
         this.checkIncome(newState)
     }
@@ -69,15 +68,15 @@ class BudgetBreakdown extends Component{
             yearlyReturn: [...investmentData.yearlyReturn],
             ages: [...investmentData.ages],
             totalReturn: (investmentData.totalReturn.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-        },()=> {console.log(this.state)})
+        })
     }
 
     calculateInvestment = (totals) => {
         let investment = 0
         let totalOverspent = (this.totalSpent(totals) - this.props.user.income)
+        // find the rough difference in flexible expenses
         investment = (((totals[4].amount + (totals[1].amount - this.state.budgets[1].amount) + totals[5].amount + totals[6].amount +  totals[8].amount)-(this.props.user.income * 0.3)))
-        console.log(investment, totalOverspent)
-
+        // handling people who are way over vs way under budgets, or who only spend over on fixed expenses
         if (investment > 0){
             investment = investment 
             if (totalOverspent > 0) investment = (investment + totalOverspent) /2
@@ -88,7 +87,6 @@ class BudgetBreakdown extends Component{
             if (totalOverspent < 0) investment = (totalOverspent + (this.props.user.income * 0.2))
             if (investment > (this.props.user.income * -0.14)) investment = (this.props.user.income * -0.14)
         }
-
         return (Math.ceil(investment / 10) * 10);
     }
 
@@ -122,48 +120,41 @@ class BudgetBreakdown extends Component{
         return Math.round(totals.reduce((acc, total) => acc + total.amount, 0))
     }
 
-
     render(){
-    return (
-        <div >
+        return (
+            <div >
                 <br/>
                 {this.state.investment ? <h3 className="darkgreen">My Spending Snapshot</h3> : null}
                 {this.state.totals.length > 0 ? 
                 (<div >
-                <CardGroup fluid="lg">
-                <Card bg="white"  >
-                <Card.Body>
-                <SpentChart  total={this.totalSpent()} totals={this.state.totals} />
-
-                <BudgetChart income={this.props.user.income} budgets={this.state.budgets.slice(0,6)}/>
-
-                </Card.Body>
-                </Card>
-                <Card bg="white"  >
-                <Card.Body>
-                <RadarChart budgets={this.state.budgets.slice(0,6)} totals={this.state.totals.slice(0,6)} />
-                <br/>
-                <ProgressBars surplus={this.state.incomeSurplus} income={this.props.user.income} budgets={this.state.budgets} totals={this.state.totals} />
-                </Card.Body>
-                </Card>
-                </CardGroup><br/>
-                <div className="jumbotron rounded-lg col-10 py-2 mt-2 bg-white mx-auto " >
-
-                <Card bg="white"  >
-                <Card.Body>
-                <InvestmentChart handleClick={this.handleClick} totalReturn={this.state.totalReturn} excess={(Math.round(this.state.investment))} yearlyReturn={this.state.yearlyReturn} ages={this.state.ages} />
-   
-                </Card.Body>
-                </Card>
-                </div>
+                    <CardGroup fluid="lg">
+                        <Card bg="white"  >
+                            <Card.Body>
+                                <SpentChart  total={this.totalSpent()} totals={this.state.totals} />
+                                <BudgetChart income={this.props.user.income} budgets={this.state.budgets.slice(0,6)}/>
+                            </Card.Body>
+                        </Card>
+                        <Card bg="white"  >
+                            <Card.Body>
+                                <RadarChart budgets={this.state.budgets.slice(0,6)} totals={this.state.totals.slice(0,6)} />
+                                <br/>
+                                <ProgressBars surplus={this.state.incomeSurplus} income={this.props.user.income} budgets={this.state.budgets} totals={this.state.totals} />
+                            </Card.Body>
+                        </Card>
+                    </CardGroup>
+                    <br/>
+                    <div className="jumbotron rounded-lg col-10 py-2 mt-2 bg-white mx-auto " >
+                        <Card bg="white"  >
+                            <Card.Body>
+                                <InvestmentChart handleClick={this.handleClick} totalReturn={this.state.totalReturn} excess={(Math.round(this.state.investment))} yearlyReturn={this.state.yearlyReturn} ages={this.state.ages} />
+                            </Card.Body>
+                        </Card>
+                    </div>
                 </div>) 
                 : null}
-
-     
-        </div>
-    );
+            </div>
+        );
     }
-
 }
 
 export default BudgetBreakdown

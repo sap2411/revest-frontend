@@ -52,7 +52,6 @@ const updateUser = (userData, userId) => {
   });
 }
 
-
 const deleteUser = (userId) => {
   const options = {
       method: 'DELETE',
@@ -70,11 +69,10 @@ const plaidAuth = userData => {
   }).then(res => res.json());
 }
 
-const fetchTransactions = accessToken => {
+const fetchTransactions = () => {
   return fetch(`${API_ROOT}/get-transactions`, {
     method: "POST",
-    headers: headers(),
-    body: JSON.stringify(accessToken)
+    headers: headers()
   }).then(res => res.json());
 }
 

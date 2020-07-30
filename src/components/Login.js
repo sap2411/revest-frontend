@@ -3,16 +3,13 @@ import { api } from '../services/api';
 import { trackPromise } from 'react-promise-tracker'
 
 class Login extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      error: false,
-      fields: {
-        email: '',
-        password: ''
-      }
-    };
-  }
+  state = {
+    error: false,
+    fields: {
+      email: '',
+      password: ''
+    }
+  };
 
   handleChange = e => {
     const updated = { ...this.state.fields, [e.target.name]: e.target.value };

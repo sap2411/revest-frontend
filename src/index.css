@@ -13,16 +13,8 @@ code {
     monospace;
 }
 
-#blue{
-  background-color: blue;
-}
-
 .p{
   cursor: pointer
-}
-
-.tan{
-  background-color: rgba(245, 210, 115, 1)
 }
 
 .green{

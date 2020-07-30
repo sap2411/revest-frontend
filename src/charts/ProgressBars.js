@@ -14,7 +14,6 @@ export default function ProgressBars({ surplus, income, totals, budgets }) {
 
     const calculateFlexible = () => {
       return (totals[4].amount + calculateAmounts() + totals[5].amount + totals[6].amount +  totals[8].amount)
-
     }
 
     const leftover = (surplus < 0 ? 0 : surplus)
@@ -28,21 +27,19 @@ export default function ProgressBars({ surplus, income, totals, budgets }) {
     return (
       <>{totals.length > 1 ?
         <>
-        <h3>The 50/30/20 Breakdown:</h3><br/>
-      <h5>Fixed Expenses - ${fixed} out of ${(income *0.5)}</h5>
-
-        <ProgressBar style={{width: '90%'}} now={fixedPercent} variant={fixedPercent < 100 ? "success" : "danger"}  animated label={`${fixedPercent}%`} />
-        <br/>
-      <h5>Flexible Expenses - ${flexible} out of ${(income * 0.3)}</h5>
-      <ProgressBar now={flexiblePercent} style={{width: '54%'}} variant={flexiblePercent < 100 ? "success" : "danger"} animated label={`${flexiblePercent}%`} />
-      <br/>
-      <h5>Leftover Savings - ${leftover} out of ${(income * 0.2)}</h5>
-      <ProgressBar now={savingsPercent} style={{width: '36%'}} variant={savingsPercent < 100 ? "warning" : "success"}  animated label={`${savingsPercent}%`} />
-
+          <h3>The 50/30/20 Breakdown:</h3><br/>
+          <h5>Fixed Expenses - ${fixed} out of ${(income *0.5)}</h5>
+          <ProgressBar style={{width: '90%'}} now={fixedPercent} variant={fixedPercent < 100 ? "success" : "danger"}  animated label={`${fixedPercent}%`} />
+          <br/>
+          <h5>Flexible Expenses - ${flexible} out of ${(income * 0.3)}</h5>
+          <ProgressBar now={flexiblePercent} style={{width: '54%'}} variant={flexiblePercent < 100 ? "success" : "danger"} animated label={`${flexiblePercent}%`} />
+          <br/>
+          <h5>Leftover Savings - ${leftover} out of ${(income * 0.2)}</h5>
+          <ProgressBar now={savingsPercent} style={{width: '36%'}} variant={savingsPercent < 100 ? "warning" : "success"}  animated label={`${savingsPercent}%`} />
         </>
         :
         null
-}
+      }
         </>
     );
   }

@@ -3,21 +3,21 @@ import { Redirect } from "react-router-dom";
 import AuthHOC from '../HOCs/AuthHOC.js';
 import { api } from '../services/api';
 import { Modal, Button } from "react-bootstrap";
+import { trackPromise } from 'react-promise-tracker'
 
 
 class EditAccount extends Component{
     state = {
         income: this.props.user.income,
         age: this.props.user.age,
-        fetchMessages: false,
         show: false
     }
 
     handleSubmit = event => {
         event.preventDefault()
+        trackPromise(
         api.auth.updateUser(this.state, this.props.user.id)
-        .then(this.handleFetchResponse)
-        // this.createNewUser(this.state)
+        .then(this.handleFetchResponse))
     }
     
     handleChange = event => {
@@ -49,8 +49,7 @@ class EditAccount extends Component{
     handleFetchResponse = response => {
         console.log(response)
         if (response.error) {
-            // Set error messages
-            this.setState({fetchMessages: response.error})
+            console.log(response)
          } else{
             // Redirect via state update
             this.setState({redirect: '/statistics'})

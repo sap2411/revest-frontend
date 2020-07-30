@@ -36,8 +36,6 @@ export default class EditTransaction extends Component{
         })
     }
 
-
-
     render(){
         return(
             <div >
@@ -54,7 +52,6 @@ export default class EditTransaction extends Component{
                         </button> 
                     </div>
                     <div className="form-group col-sm">
-                        
                     </div>
                 </form>
             </div>

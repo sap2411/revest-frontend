@@ -5,30 +5,23 @@ import { api } from '../services/api';
 import { trackPromise } from 'react-promise-tracker'
 
 class Home extends Component {
-    constructor(props){
-        super(props)
-        console.log(this.props.user)
-        this.sate = {
-            // transactions: (this.props.user.data.relationships.transactions.data.length > 0)
-        }
-    }
 
     onSuccess = (token, metadata) => {
+        // metadata is needed for stretch goals in implimenting multiple bank accounts
         trackPromise(
         api.auth.plaidAuth({token: token})
-        .then(resp => {
-            this.getTransactions({access_token: resp.access_token})
+        .then(() => {
+            this.getTransactions()
         })
         .catch(console.log));
     };
 
-    getTransactions = (access_token = {}) => {
+    getTransactions = () => {
         trackPromise(
-        api.auth.fetchTransactions(access_token)
+        api.auth.fetchTransactions()
         .then(() => this.props.history.push('/statistics'))
         .catch(console.log))
     }
-
 
     render() {
         return (

@@ -25,7 +25,6 @@ class AccountForm extends Component {
         trackPromise(
         api.auth.createNewUser(this.state)
         .then(this.handleFetchResponse))
-        // this.createNewUser(this.state)
     }
 
     handleContinue = () => {
@@ -40,6 +39,7 @@ class AccountForm extends Component {
     }
 
     handleSkip = () => {
+        // assign default data if the user doesnt input income or age
         this.setState({
             age: 21,
             income: 3000
@@ -82,7 +82,6 @@ class AccountForm extends Component {
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect} />
         }
-
         return (
             <div className="card col-4 my-5 mx-auto px-0 rounded-lg">
                 {this.state.continue ? 
@@ -127,15 +126,12 @@ class AccountForm extends Component {
                     <div className="form-group col-sm">
                         <input type="password" className="form-control" placeholder="Password Confirmation" name="passwordC" value={this.state.passwordC} onChange={event => this.handleChange(event)}/>
                     </div>
-
-                    <div className="form-group col-sm">
-                     
+                    <div className="form-group col-sm">                   
                         <button disabled={this.state.password === this.state.passwordC && !!this.state.password ? false : true} onClick={this.handleContinue} type="submit" className="btn btn-block btn-success p">
                             {!!this.props.user.id ? <i className="fas fa-user-edit"></i> : <i className="fas fa-user-plus"></i>}
                             <span className="d-none d-sm-none d-md-inline"> Continue</span>
                         </button> 
-                    </div>
-        
+                    </div>       
                     {/* Conditionally render via && operator acting as if statement */}
                     {this.state.fetchMessages &&
                         <div className="d-flex justify-content-center">
@@ -145,7 +141,6 @@ class AccountForm extends Component {
                         </div>
                     }
                 </form>}
-
             </div>
         )
     }

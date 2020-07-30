@@ -4,6 +4,7 @@ import { api } from "../services/api";
 const AuthHOC = WrappedComponent => {
   return class AuthHOC extends Component {
     _isMounted = false;
+
     state = {
       authorized: false,
       user: []
@@ -15,6 +16,7 @@ const AuthHOC = WrappedComponent => {
     }
 
     checkLogin = () => {
+      // redirect if a non-loggedin user is trying to access a secure page
       if (!localStorage.getItem("token")) {
         console.log("no token")
         this.props.history.push("/create-account")

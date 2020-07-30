@@ -7,7 +7,6 @@ import About from './components/Welcome.js';
 import Home from './components/Home.js';
 import Login from './components/Login.js';
 import { api } from "./services/api";
-import Plaid from './components/Plaid.js';
 import Statistics from './components/Statistics.js';
 import Resources from './components/Resources.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,12 +17,9 @@ import './App.css';
 
 class App extends Component {
 
-  constructor(props){
-    super(props)
-    this.state={
-      auth: {
+  state = {
+    auth: {
       user: {}
-    }
     }
   }
 
@@ -41,15 +37,13 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
+      trackPromise(
       api.auth.getCurrentUser().then(user => {
-        console.log(user)
         const updatedState = { ...this.state.auth, user: user.user.data.attributes };
         this.setState({ auth: updatedState });
-      });
+      }));
     }
   }
-
-
 
   render() {
     return (
@@ -57,7 +51,6 @@ class App extends Component {
       <div>
         <Navbar user={this.state.auth.user} handleLogOut={this.logout} />
         <Route exact path="/" component={() => <About user={this.state.auth.user} />} />
-        <Route exact path="/plaid" component={() => <Plaid user={this.state.auth.user} />} />
         <Route exact path="/login" render={props => <Login {...props}  onLogin={this.login} />} />
         <Route exact path="/Home" render={props => <Home {...props}  user={this.state.auth.user} />} />
         <Route exact path="/create-account" component={props => <AccountForm {...props} user={this.state.auth.user} loggedIn={this.login} />} />

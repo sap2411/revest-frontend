@@ -1,12 +1,10 @@
 import React from 'react';
 import { Card, CardDeck } from "react-bootstrap";
 
-
-
 const Resources = () => {
+    // open a link on a new tab
     const newTab = (url) => { 
-        window.open( 
-          url, "_blank"); 
+        window.open(url, "_blank"); 
     }
 
     return (
@@ -22,8 +20,8 @@ const Resources = () => {
 
         <h5>Simplicity:</h5><p>Investing in the Vanguard Total Stock Market Index Fund (VTSAX) for example, is a way to make a relatively safe investment, and let it grow without much work, fees, or complication. Also, if you invest through a Roth IRA, that investment will already have income tax taken out, so you won't have to pay that tax when you are over 60.</p>
         <div class="float-left">
-        <h2><u>Featured Video:</u></h2>
-        <iframe title="Investing" width="560" height="315" src="https://www.youtube.com/embed/zR64-Ea_r5U" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            <h2><u>Featured Video:</u></h2>
+            <iframe title="Investing" width="560" height="315" src="https://www.youtube.com/embed/zR64-Ea_r5U" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>
         <br/>
         <div className="ui two column  grid" >
@@ -37,7 +35,8 @@ const Resources = () => {
                             Graham has an entertaining playlist of videos he has made on investing. Great for anyone who wants to learn in a lighthearted way.
                         </Card.Text>
                     </Card.Body>
-                </Card><br/>
+                </Card>
+                <br/>
                 <Card onClick={() => newTab("https://www.stackingbenjamins.com/")} bg='light'  text="black" style={{ width: '18rem' }} className="p">
                     <Card.Img style={{ width: '18rem' }} variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRbdcEW9Sze3Lo_Hm98w3xNUhTlWssxYZDN-g&usqp=CAU'  />
                     <Card.Body>
@@ -46,7 +45,8 @@ const Resources = () => {
                         Perfect for beginners. A parade of financial headlines, personal finance experts, and people with stories that inspire us. 
                         </Card.Text>
                     </Card.Body>
-                </Card><br/>
+                </Card>
+                <br/>
             </div>
             <div className="col">
                 <h4><u>Recommended Resources:</u></h4>
@@ -58,7 +58,8 @@ const Resources = () => {
                             Opening a Roth IRA can be a great first step towards investing while avoiding a large tax at the end of it.
                         </Card.Text>
                     </Card.Body>
-                </Card><br/>
+                </Card>
+                <br/>
                 <Card onClick={() => newTab("https://investor.vanguard.com/index-funds/")}  bg='light'  text="black" style={{ width: '18rem' }} className="p">
                     <Card.Img variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_BJDfojWmSj5RMqqRwOuDhAraxnQX-I_pVQ&usqp=CAU'  />
                     <Card.Body>
@@ -67,11 +68,9 @@ const Resources = () => {
                             Vanguard has a history of strong returns with index funds, and is a great trusted company to get guidance. Learn more here.
                         </Card.Text>
                     </Card.Body>
-                </Card><br/>
-                
+                </Card>
+                <br/>               
             </div>
-
- 
         </div>
         <h4><u>Investment Platforms:</u></h4>
         <CardDeck>
@@ -112,9 +111,6 @@ const Resources = () => {
                 </Card.Body>
             </Card>
         </CardDeck>
-        
-       
-
     </div>
     );
 }

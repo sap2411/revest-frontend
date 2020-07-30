@@ -18,8 +18,7 @@ import { Chart, Doughnut } from "react-chartjs-2";
         display: true,
         text: "Your Spending",
         fontSize: 20,
-      },
-    
+      },  
       hover: {
         mode: "nearest",
         intersect: false,
@@ -97,10 +96,8 @@ import { Chart, Doughnut } from "react-chartjs-2";
     });
 
     return (
-      <>
-        
-        <Doughnut height={null} width={null} data={data} options={options} />
-        
+      <>    
+        <Doughnut height={null} width={null} data={data} options={options} />     
       </>
     );
   }

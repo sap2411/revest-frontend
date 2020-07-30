@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { api } from '../services/api';
 import EditTransaction from './EditTransaction';
+import { trackPromise } from 'react-promise-tracker'
 
 export default class EditBudget extends Component{
     state = {
@@ -11,8 +12,9 @@ export default class EditBudget extends Component{
 
     handleSubmit = event => {
         event.preventDefault()
+        trackPromise(
         api.auth.updateBudget(this.state, this.props.budget.id)
-        .then(this.handleFetchResponse)
+        .then(this.handleFetchResponse))
     }
     
     handleChange = event => {
