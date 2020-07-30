@@ -1,68 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Revest - Frontend
 
-## Available Scripts
+Revest is an application that analyses a users bank data, generates customized bugets, and tracks there spending in order to encourage saving and investing. 
 
-In the project directory, you can run:
+[This](https://github.com/sap2411/revest-backend) is a link to the back-end repository.
 
-### `yarn start`
+## Motivation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I wanted to create an app that could encourage young professionals to take charge of their finances and concider investing. I had been learning a lot about these topics over the year by seeing other peoples financials used as examples for how to budget properly, and I wanted to give that ability to any user specifically. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Screenshots
+Home Page
 
-### `yarn test`
+<img src="public/landing.png" width="800">
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Create Account
 
-### `yarn build`
+<img src="public/signup.png" width="800">
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Connect Bank Account
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<img src="public/bankconnect.png" width="800">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Track Your Spending
 
-### `yarn eject`
+<img src="public/budgets.png" width="800">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Realize Potential Investment
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="public/invest.png" width="800">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Customize Budgets
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img src="public/edit.png" width="800">
 
-## Learn More
+Learn More On Investing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img src="public/resources.png" width="800">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Technology Used
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- JS
+- Rails Router
+- React
+- Bootstrap
+- Plaid
 
-### Analyzing the Bundle Size
+## Features
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Users Can:
+- Create an account
+- Connect their bank account and import transactions
+- Track their spending and budgeting
+- Customize their budgets
+- Work towards an investment goal
+- Learn more about investing through linked resources
+- Edit their income, age, or delete their account
 
-### Making a Progressive Web App
+## Installation
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Clone the front-end, and run 'npm i && npm audit fix' then 'yarn start'
 
-### Advanced Configuration
+Clone back-end repo, aquire an api secret key from Plaid and use it on line 10 of revest-backend/app/models/plaid.rb, run the following commands in order: bundle install, rails db:migrate, rails db:seed, rails s -p 3001.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Contributing
 
-### Deployment
+Contributions are welcome, submit a pull request!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Author
 
-### `yarn build` fails to minify
+* **Steven Parsons** - [GitHub](https://github.com/sap24471)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## License
+
+This project is licensed under the [GNU GPL](https://www.gnu.org/licenses/gpl-3.0.en.html)
