@@ -80,7 +80,9 @@ import { Chart, Doughnut } from "react-chartjs-2";
             '#fcf747',
             '#0d0d0d'
           ],
-          data: totals.map((k) => k.amount),
+          data: totals.map((k) => {
+            return k.amount >= 0 ? k.amount : 0
+          }),
         },
       ]
     };

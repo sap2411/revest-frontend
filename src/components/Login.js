@@ -22,7 +22,6 @@ class Login extends React.Component {
     api.auth.login({user: this.state.fields}).then(res => {
       if (!res.message) {
         localStorage.setItem("token", res.jwt);
-        console.log(res, "testing")
         this.props.onLogin(res.user.data.attributes);
         if(res.user.data.relationships.transactions.data.length > 0) this.props.history.push('/statistics')
         else this.props.history.push('/home');
@@ -64,7 +63,7 @@ class Login extends React.Component {
             </button>
             </div>
             <div className="form-group col-sm" >
-            {this.state.error ? <h2>Invalid Credentials</h2> : null}
+            {this.state.error && <h2>Invalid Credentials</h2>}
             </div>
           </form>
         </div>

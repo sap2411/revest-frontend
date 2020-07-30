@@ -34,7 +34,6 @@ const createNewUser = userData => {
     }
     return fetch(`${API_ROOT}/users`, options)
     .then(resp => {
-        console.log("created", resp)
         return resp.json()
     });
 }

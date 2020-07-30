@@ -76,7 +76,6 @@ class EditAccount extends Component{
                         <label className="text-left">Age</label>
                         <input type="number" className="form-control" placeholder="Age" name="age" value={this.state.age} onChange={event => this.handleChange(event)}/>
                     </div>
-
                     <div className="form-group col-sm">
                         <button type="submit"  className="btn btn-block btn-success p">
                             <i className="fas fa-user-edit"></i> 

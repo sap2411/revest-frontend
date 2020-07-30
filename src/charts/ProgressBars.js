@@ -25,7 +25,7 @@ export default function ProgressBars({ surplus, income, totals, budgets }) {
     let savingsPercent = Math.round((leftover/(income*0.2))*100)
 
     return (
-      <>{totals.length > 1 ?
+      <>{totals.length > 1 &&
         <>
           <h3>The 50/30/20 Breakdown:</h3><br/>
           <h5>Fixed Expenses - ${fixed} out of ${(income *0.5)}</h5>
@@ -36,10 +36,7 @@ export default function ProgressBars({ surplus, income, totals, budgets }) {
           <br/>
           <h5>Leftover Savings - ${leftover} out of ${(income * 0.2)}</h5>
           <ProgressBar now={savingsPercent} style={{width: '36%'}} variant={savingsPercent < 100 ? "warning" : "success"}  animated label={`${savingsPercent}%`} />
-        </>
-        :
-        null
-      }
+        </>}
         </>
     );
   }

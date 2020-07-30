@@ -60,7 +60,6 @@ const Navbar = ({ user, handleLogOut }) => {
                     </li>
                     </>
                 }
-
                 </ul>
             </nav>
         </header>

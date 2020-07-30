@@ -13,14 +13,14 @@ const Resources = () => {
         <h3>First off, what is an index fund?</h3>
         <p>Simply put, an index fund is a group of investments that track an index, and you can invest in them and own a small percentage.</p>
 
-        <h3>Why Invest in an Index Fund</h3>
+        <h3>Why invest in an index fund?</h3>
         <h5>Fees:</h5><p>They have low fees partially due to their simplicity, such as a mutual fund which has higher fees and the added overhead of the fund management.</p>
 
         <h5>Reliability:</h5><p>Index funds such as the SMP 500 have historic returns and studies show that they lead to higher returns on average, compared to investing in individual stocks on your own. They are also more diversified, like the SMP 50 which tracks the top 500 stocks. This prevents one stock dropping from heavily affecting your portfolio.</p>
 
         <h5>Simplicity:</h5><p>Investing in the Vanguard Total Stock Market Index Fund (VTSAX) for example, is a way to make a relatively safe investment, and let it grow without much work, fees, or complication. Also, if you invest through a Roth IRA, that investment will already have income tax taken out, so you won't have to pay that tax when you are over 60.</p>
-        <div class="float-left">
-            <h2><u>Featured Video:</u></h2>
+        <div className="float-left">
+            <h4><u>Featured Video:</u></h4>
             <iframe title="Investing" width="560" height="315" src="https://www.youtube.com/embed/zR64-Ea_r5U" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>
         <br/>

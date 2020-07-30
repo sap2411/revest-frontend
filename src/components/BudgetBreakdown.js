@@ -124,8 +124,8 @@ class BudgetBreakdown extends Component{
         return (
             <div >
                 <br/>
-                {this.state.investment ? <h3 className="darkgreen">My Spending Snapshot</h3> : null}
-                {this.state.totals.length > 0 ? 
+                {this.state.investment && <h3 className="darkgreen">My Spending Snapshot</h3>}
+                {this.state.totals.length > 0 && 
                 (<div >
                     <CardGroup fluid="lg">
                         <Card bg="white"  >
@@ -150,8 +150,7 @@ class BudgetBreakdown extends Component{
                             </Card.Body>
                         </Card>
                     </div>
-                </div>) 
-                : null}
+                </div>)}
             </div>
         );
     }
