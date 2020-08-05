@@ -5,7 +5,7 @@ const Plaid = props => {
   return (
     <PlaidLink
       clientName="Revest"
-      env="development"
+      env="sandbox"
       product={['auth', 'transactions']}
       publicKey={process.env.REACT_APP_PUBLIC_API_KEY}
       onSuccess={props.onSuccess}
