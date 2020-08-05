@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Plaid from './Plaid.js';
+import Plaid from './Plaid.js';
 import AuthHOC from '../HOCs/AuthHOC.js';
 import { api } from '../services/api';
 import { trackPromise } from 'react-promise-tracker'
@@ -38,7 +38,7 @@ class Home extends Component {
                     <h1 className="display-4">Now let’s connect your bank account to start tracking your finances.</h1>
                     <p className="lead">You will be asked to select your bank and login securely.</p>
                     <hr className="my-4"/>
-                    {/* <Plaid transactions={true} onSuccess={this.onSuccess}/> */}
+                    <Plaid transactions={true} onSuccess={this.onSuccess}/>
                 </div>}
             </div>
         );
