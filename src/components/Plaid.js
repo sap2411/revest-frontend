@@ -7,7 +7,7 @@ const Plaid = props => {
       clientName="Revest"
       env="sandbox"
       product={['auth', 'transactions']}
-      publicKey={process.env.REACT_APP_PUBLIC_API_KEY}
+      publicKey={'6cf382bf1795dfca8f747b347c1947'}
       onSuccess={props.onSuccess}
     >
       <i className="fa fa-credit-card" aria-hidden="true"></i>
