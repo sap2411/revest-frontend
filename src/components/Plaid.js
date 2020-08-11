@@ -1,5 +1,10 @@
 import { PlaidLink } from "react-plaid-link";
 import React from "react";
+const aws = require('aws-sdk');
+
+let plaid = new aws.plaid({
+  publicKey: process.env.PUBLIC_KEY
+});
 
 const Plaid = props => {
   return (
@@ -7,7 +12,7 @@ const Plaid = props => {
       clientName="Revest"
       env="sandbox"
       product={['auth', 'transactions']}
-      publicKey={'6cf382bf1795dfca8f747b347c1947'}
+      publicKey={plaid.publicKey}
       onSuccess={props.onSuccess}
     >
       <i className="fa fa-credit-card" aria-hidden="true"></i>
