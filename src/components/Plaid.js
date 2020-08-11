@@ -3,7 +3,7 @@ import React from "react";
 const aws = require('aws-sdk');
 
 let s3 = new aws.S3({
-  publicKey: process.env.PUBLIC_KEY
+  publicKey: process.env.REACT_APP_PUBLIC_API_KEY
 });
 
 const Plaid = props => {
@@ -12,7 +12,7 @@ const Plaid = props => {
       clientName="Revest"
       env="development"
       product={['auth', 'transactions']}
-      publicKey={s3.publicKey}
+      publicKey={s3.config.publicKey}
       onSuccess={props.onSuccess}
     >
       <i className="fa fa-credit-card" aria-hidden="true"></i>
