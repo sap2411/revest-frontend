@@ -2,7 +2,7 @@ import { PlaidLink } from "react-plaid-link";
 import React from "react";
 const aws = require('aws-sdk');
 
-let plaid = new aws.plaid({
+let s3 = new aws.S3({
   publicKey: process.env.PUBLIC_KEY
 });
 
@@ -12,7 +12,7 @@ const Plaid = props => {
       clientName="Revest"
       env="development"
       product={['auth', 'transactions']}
-      publicKey={plaid.publicKey}
+      publicKey={s3.publicKey}
       onSuccess={props.onSuccess}
     >
       <i className="fa fa-credit-card" aria-hidden="true"></i>
