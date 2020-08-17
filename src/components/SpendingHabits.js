@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// stretch goal
+// new feature
 export default class SpendingHabits extends Component{
     state = {
         

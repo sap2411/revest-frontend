@@ -8,21 +8,17 @@ class Home extends Component {
 
     onSuccess = (token, metadata) => {
         // metadata is needed for stretch goals in implimenting multiple bank accounts
-        console.log(token)
         trackPromise(
         api.auth.plaidAuth({token: token})
         .then((resp) => {
-            console.log(resp)
             this.getTransactions()
-        })
-        .catch(console.log));
+        }));
     };
 
     getTransactions = () => {
         trackPromise(
         api.auth.fetchTransactions()
-        .then(() => this.props.history.push('/statistics'))
-        .catch(console.log))
+        .then(() => this.props.history.push('/statistics')))
     }
 
     render() {

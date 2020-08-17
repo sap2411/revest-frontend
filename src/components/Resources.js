@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, CardDeck } from "react-bootstrap";
 
 const Resources = () => {
-    // open a link on a new tab
     const newTab = (url) => { 
         window.open(url, "_blank"); 
     }

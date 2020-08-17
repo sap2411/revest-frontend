@@ -28,16 +28,14 @@ class Statistics extends Component{
                     budgets: [...(res.sort(function(a, b){return a.id-b.id}))]
                 })
             }
-        })
-        .catch(console.log))
+        }))
     }
 
     getTransactions = (access_token = {}) => {
         this._isMounted = true;
         trackPromise(
         api.auth.fetchTransactions(access_token)
-        .then(this.getBudgets)
-        .catch(console.log))
+        .then(this.getBudgets))
     }
 
     componentWillUnmount = () => {
