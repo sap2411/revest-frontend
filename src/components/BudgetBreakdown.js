@@ -91,10 +91,11 @@ class BudgetBreakdown extends Component{
     }
 
     calculateReturn = (num) => {
+        let maxAge = (this.props.user.age < 60 ? 60 : (this.props.user.age + 10))
         let total = num
         let arr = [num]
         let ageArr = []
-        for(let i = this.props.user.age; i < 60; i++){
+        for(let i = this.props.user.age; i < maxAge; i++){
             total = (Math.round(total + (total*0.07)) + (num*12))
             ageArr.push(i)
             arr.push(total)
