@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent, wait } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders landing page', () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const title = getByText("Personal finance and investng doesn't have to be intimidating.");
+  expect(title).toBeInTheDocument();
 });
