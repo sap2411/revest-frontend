@@ -1,9 +1,16 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
+import { render, fireEvent, wait, screen } from '@testing-library/react';
 import App from './App';
+import About from './components/Welcome.js';
 
-test('renders landing page', () => {
+test('Renders landing page', () => {
   const { getByText } = render(<App />);
-  const title = getByText("Personal finance and investng doesn't have to be intimidating.");
+  const title = screen.getByText("Personal finance and investng doesn't have to be intimidating.");
   expect(title).toBeInTheDocument();
 });
+
+test('Conditionally renders log-in button for new user', () => {
+  const { getByText } = render(<App />);
+  const button = screen.getByText("Let's Get Started!", { exact: false });
+  expect(button).toBeInTheDocument();
+})
