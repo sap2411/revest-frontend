@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, wait, screen, cleanup } from '@testing-library/react';
 import App from './App';
+import user from '@testing-library/user-event';
 import About from './components/Welcome.js';
 
 afterEach(cleanup);
@@ -23,8 +24,11 @@ test("Conditional Nav-Links", () => {
   expect(budgets).toBeNull();
 })
 
-// test("Conditional Nav-Links", () => {
-//   const { queryByText } = render(<App user={{id:1}} />)
-//   const budgets = screen.queryByText("Budget Breakdown", { exact: false})
-//   expect(budgets).toBeInTheDocument();
-// })
+test('While not logged in, user can click through to the resource page', () => {
+  const { queryByText } = render(<App />)
+  const resources = screen.getByText("Investment Resources", { exact: false });
+  expect(resources).toBeInTheDocument();
+  user.click(resources)
+  const resourcePage = screen.getByText('Lets get you investing!')
+  expect(resourcePage).toBeInTheDocument
+})
