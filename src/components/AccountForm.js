@@ -108,7 +108,7 @@ class AccountForm extends Component {
                 <form className="card-body" >
                     <div className="form-group col-sm text-left">
                         <h3>Create Account</h3>
-                        {!!!this.props.user.id && <h7>Already have an account? <span className="p " onClick={() => this.props.history.push('/login')}><u className='green' >sign in</u></span></h7>}
+                        {!!!this.props.user.id && <h6>Already have an account? <span className="p " onClick={() => this.props.history.push('/login')}><u className='green' >sign in</u></span></h6>}
                     </div>
                     <div className="form-group col-sm">
                         <input type="text" className="form-control" placeholder="First Name" name="first_name" value={this.state.first_name} onChange={event => this.handleChange(event)}/>

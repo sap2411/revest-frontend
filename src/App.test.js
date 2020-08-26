@@ -18,6 +18,16 @@ test('Conditionally renders log-in button for new user', () => {
   expect(button).toBeInTheDocument();
 })
 
+test('User can either log in or create an account', () => {
+  const { getByText } = render(<App />);
+  const button = screen.getByText("Let's Get Started!", { exact: false });
+  user.click(button);
+  const loginLink = screen.getByText("sign in")
+  expect(loginLink).toBeInTheDocument();
+  user.click(loginLink)
+  expect(screen.getByText("Welcome Back")).toBeInTheDocument();
+})
+
 test("Conditional Nav-Links", () => {
   const { queryByText } = render(<App />)
   const budgets = screen.queryByText("Budget Breakdown", { exact: false})
