@@ -10,7 +10,7 @@ const About = (props) => {
             <div className="jumbotron rounded-lg col-10 py-1 mt-5 bg-white mx-auto text-center">
                 <div className="container text-left">
                     <img width={500} src="laptop.png" alt="wealth growth" className="float-right"></img>
-                    <h1>Personal finance and investng doesn't have to be intimidating.</h1>
+                    <h1>Personal finance and investing doesn't have to be intimidating.</h1>
                     <h3>We can help you get started with a personalized budget and resources to fit your needs.</h3>
                     <br/>
                     <h5>Our tools and resources are here to guide the beginner investor through their personal finance journey.</h5>
@@ -20,6 +20,12 @@ const About = (props) => {
                             <button className="btn btn-success btn-lg mx-4" type="button">
                                 <i className="fas fa-user-plus"></i>
                                 <span className="d-none d-sm-none d-md-inline"> Let's Get Started!</span>
+                            </button>
+                        </Link>
+                        <Link exact to="/demo-account" title="Demo Account">
+                            <button className="btn btn-success btn-lg mx-4" type="button">
+                                <i className="fas fa-user-plus"></i>
+                                <span className="d-none d-sm-none d-md-inline"> Use Demo Account</span>
                             </button>
                         </Link>
                     </div>}

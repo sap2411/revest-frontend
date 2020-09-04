@@ -6,8 +6,8 @@ class Login extends React.Component {
   state = {
     error: false,
     fields: {
-      email: '',
-      password: ''
+      email: this.props.email ? this.props.email : '',
+      password: this.props.password ? this.props.password : ''
     }
   };
 
