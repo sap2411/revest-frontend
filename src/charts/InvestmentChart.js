@@ -57,7 +57,7 @@ export default function InvestmentChart({ yearlyReturn, ages, excess, totalRetur
 
   // error handling if the user isnt over spending
   const adjustedInvestment = () => {
-    if (excess > 0) return (<>`exceeded several budgets. After calculating any excess spending and factoring in any surpluses, we have identified an investible excess of roughly {" "}
+    if (excess > 0) return (<>exceeded several budgets. After calculating any excess spending and factoring in any surpluses, we have identified an investible excess of roughly {" "}
       <OverlayTrigger
           key={'top'}
           placement={'top'}
