@@ -2,6 +2,8 @@
 
 Revest is an application that analyses a users bank data, generates customized bugets, and tracks there spending in order to encourage saving and investing. 
 
+[This](https://revest-frontend.herokuapp.com/) is a link to the live site.
+
 [This](https://github.com/sap2411/revest-backend) is a link to the back-end repository.
 
 ## Motivation
