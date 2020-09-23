@@ -73,6 +73,27 @@ const Resources = () => {
         </div>
         <h4><u>Investment Platforms:</u></h4>
         <CardDeck>
+        <Card
+          onClick={() =>
+            newTab("https://stock-market-practice.netlify.app/login")
+          }
+          bg="light"
+          text="black"
+          style={{ width: "18rem" }}
+          className="p"
+        >
+          <Card.Img
+            variant="top"
+            src="https://github.com/matthewsedlacek/portfolio-practice-frontend/blob/master/public/Logo_.png?raw=true"
+          />
+          <Card.Body>
+            <h5>Portfolio Practice</h5>
+            <Card.Text>
+              Empowers new investors with a no risk opportunity to practice
+              buying and selling stocks.
+            </Card.Text>
+          </Card.Body>
+        </Card>
             <Card onClick={() => newTab("http://www.robinhood.com/")}  bg='light'  text="black" style={{ width: '18rem' }} className="p">
                 <Card.Img variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTCzMvBPWjMwKzFvpeiNBI6Xqk7avexEZlQVA&usqp=CAU'  />
                 <Card.Body>
