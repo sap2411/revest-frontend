@@ -5,6 +5,7 @@ import { Tabs, Tab, Button } from "react-bootstrap";
 import EditBudgets from './EditBudgets.js'
 import BudgetBreakdown from './BudgetBreakdown.js'
 import { trackPromise } from 'react-promise-tracker'
+import Tips from './Tips.js'
 
 class Statistics extends Component{
     state = {
@@ -57,6 +58,9 @@ class Statistics extends Component{
                         </Tab> */}
                     <Tab eventKey="budgets" title="Modify Budgets and Transactions">
                         <EditBudgets getBudgets={this.getBudgets} budgets={this.state.budgets} />
+                    </Tab>
+                    <Tab eventKey="tips" title="Financial Tips">
+                        <Tips  />
                     </Tab>
                 </Tabs>
             </div>
