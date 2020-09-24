@@ -16,7 +16,7 @@ const About = (props) => {
                     <h5>Our tools and resources are here to guide the beginner investor through their personal finance journey.</h5>
                     {!!props.user.id ? <><br/><br/><br/></> :
                     <div className="text-left"><br/>
-                        <Link exact to="/create-account" title="Create Account">
+                        <Link to="/create-account" title="Create Account">
                             <button className="btn btn-success btn-lg mx-4" type="button">
                                 <i className="fas fa-user-plus"></i>
                                 <span className="d-none d-sm-none d-md-inline"> Let's Get Started!</span>
