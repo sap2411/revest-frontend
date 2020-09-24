@@ -28,15 +28,13 @@ class AccountForm extends Component {
     }
 
     handleContinue = () => {
-        event.preventDefault()
         const passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
         if(this.state.password.match(passw)){
             let flip = !this.state.continue
             this.setState({continue: flip})
         }else{
             this.setState({
-                fetchMessages: [...response.errors, "Password requires 6-12 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character"],
-                continue: false
+                fetchMessages: ["Password requires 6-12 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character"],
             })
         }
     }
@@ -135,7 +133,7 @@ class AccountForm extends Component {
                         <input type="password" className="form-control" placeholder="Password Confirmation" name="passwordC" value={this.state.passwordC} onChange={event => this.handleChange(event)}/>
                     </div>
                     <div className="form-group col-sm">                   
-                        <button disabled={this.state.password === this.state.passwordC && !!this.state.password ? false : true} onClick={this.handleContinue} type="submit" className="btn btn-block btn-success p">
+                        <button disabled={this.state.password === this.state.passwordC && !!this.state.password ? false : true} onClick={this.handleContinue} type="button" className="btn btn-block btn-success p">
                             {!!this.props.user.id ? <i className="fas fa-user-edit"></i> : <i className="fas fa-user-plus"></i>}
                             <span className="d-none d-sm-none d-md-inline"> Continue</span>
                         </button> 
