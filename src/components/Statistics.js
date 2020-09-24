@@ -5,6 +5,7 @@ import { Tabs, Tab, Button } from "react-bootstrap";
 import EditBudgets from './EditBudgets.js'
 import BudgetBreakdown from './BudgetBreakdown.js'
 import { trackPromise } from 'react-promise-tracker'
+import Tips from './Tips.js'
 
 class Statistics extends Component{
     state = {
@@ -28,16 +29,14 @@ class Statistics extends Component{
                     budgets: [...(res.sort(function(a, b){return a.id-b.id}))]
                 })
             }
-        })
-        .catch(console.log))
+        }))
     }
 
     getTransactions = (access_token = {}) => {
         this._isMounted = true;
         trackPromise(
         api.auth.fetchTransactions(access_token)
-        .then(this.getBudgets)
-        .catch(console.log))
+        .then(this.getBudgets))
     }
 
     componentWillUnmount = () => {
@@ -59,6 +58,9 @@ class Statistics extends Component{
                         </Tab> */}
                     <Tab eventKey="budgets" title="Modify Budgets and Transactions">
                         <EditBudgets getBudgets={this.getBudgets} budgets={this.state.budgets} />
+                    </Tab>
+                    <Tab eventKey="tips" title="Financial Tips">
+                        <Tips income={this.props.user.income}/>
                     </Tab>
                 </Tabs>
             </div>

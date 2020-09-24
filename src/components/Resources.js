@@ -2,10 +2,10 @@ import React from "react";
 import { Card, CardDeck } from "react-bootstrap";
 
 const Resources = () => {
-  // open a link on a new tab
-  const newTab = (url) => {
-    window.open(url, "_blank");
-  };
+    const newTab = (url) => { 
+        window.open(url, "_blank"); 
+    }
+
 
   return (
     <div className="jumbotron rounded-lg col-10 py-2 mt-5 bg-white mx-auto text-left">
@@ -157,87 +157,8 @@ const Resources = () => {
           </Card>
           <br />
         </div>
-      </div>
-      <h4>
-        <u>Investment Platforms:</u>
-      </h4>
-      <CardDeck>
-        <Card
-          onClick={() => newTab("http://www.robinhood.com/")}
-          bg="light"
-          text="black"
-          style={{ width: "18rem" }}
-          className="p"
-        >
-          <Card.Img
-            variant="top"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTCzMvBPWjMwKzFvpeiNBI6Xqk7avexEZlQVA&usqp=CAU"
-          />
-          <Card.Body>
-            <h5>Robinhood</h5>
-            <Card.Text>
-              Robinhood is a great and simple app for new investors.
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        <Card
-          onClick={() => newTab("https://www.acorns.com/")}
-          bg="light"
-          text="black"
-          style={{ width: "18rem" }}
-          className="p"
-        >
-          <Card.Img
-            variant="top"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSpj67q8wgTxlH95mxx1szElaydk3J0sMQ8-g&usqp=CAU"
-          />
-          <Card.Body>
-            <h5>Acorns</h5>
-            <Card.Text>
-              Acorns rounds up every purchase to the next dollar and invests the
-              difference on your behave, so you dont have to think about it.
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        <Card
-          onClick={() => newTab("https://www.webull.com/")}
-          bg="light"
-          text="black"
-          style={{ width: "18rem" }}
-          className="p"
-        >
-          <Card.Img
-            variant="top"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS9M6Sg3vMHWUqO2lEraAXndCbpc47OGaa4Cg&usqp=CAU"
-          />
-          <Card.Body>
-            <h5>Webull</h5>
-            <Card.Text>
-              A simple investing app with low fees and a free stock upon sign-up
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        <Card
-          onClick={() =>
-            newTab("https://www.chase.com/personal/investments/you-invest")
-          }
-          bg="light"
-          text="black"
-          style={{ width: "18rem" }}
-          className="p"
-        >
-          <Card.Img
-            variant="top"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlcq09lvHYXTTZOpGC24UpQRUQx2wUvTdH7w&usqp=CAU"
-          />
-          <Card.Body>
-            <h5>You Invest</h5>
-            <Card.Text>
-              J.P. Morgan throw their hat in the personal investment ring with
-              this easy to use app, and stellar customer service.
-            </Card.Text>
-          </Card.Body>
-        </Card>
+        <h4><u>Investment Platforms:</u></h4>
+        <CardDeck>
         <Card
           onClick={() =>
             newTab("https://stock-market-practice.netlify.app/login")
@@ -255,11 +176,48 @@ const Resources = () => {
             <h5>Portfolio Practice</h5>
             <Card.Text>
               Empowers new investors with a no risk opportunity to practice
-              buying and selling stocks
+              buying and selling stocks.
             </Card.Text>
           </Card.Body>
         </Card>
-      </CardDeck>
+            <Card onClick={() => newTab("http://www.robinhood.com/")}  bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                <Card.Img variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTCzMvBPWjMwKzFvpeiNBI6Xqk7avexEZlQVA&usqp=CAU'  />
+                <Card.Body>
+                <h5>Robinhood</h5>
+                    <Card.Text>
+                        Robinhood is a great and simple app for new investors.
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+            <Card onClick={() => newTab("https://www.acorns.com/")}  bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                <Card.Img  variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSpj67q8wgTxlH95mxx1szElaydk3J0sMQ8-g&usqp=CAU'  />
+                <Card.Body>
+                <h5>Acorns</h5>
+                    <Card.Text>
+                        Acorns rounds up every purchase to the next dollar and invests the difference on your behave, so you dont have to think about it.
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+            <Card onClick={() => newTab("https://www.webull.com/")}  bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                <Card.Img  variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS9M6Sg3vMHWUqO2lEraAXndCbpc47OGaa4Cg&usqp=CAU'  />
+                <Card.Body>
+                    <h5>Webull</h5>
+                    <Card.Text>
+                        A simple investing app with low fees and a free stock upon sign-up
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+            <Card onClick={() => newTab("https://www.chase.com/personal/investments/you-invest")}  bg='light'  text="black" style={{ width: '18rem' }} className="p">
+                <Card.Img  variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlcq09lvHYXTTZOpGC24UpQRUQx2wUvTdH7w&usqp=CAU'  />
+                <Card.Body>
+                <h5>You Invest</h5>
+                    <Card.Text>
+                        J.P. Morgan throw their hat in the personal investment ring with this easy to use app, and stellar customer service.
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        </CardDeck>
+
     </div>
   );
 };

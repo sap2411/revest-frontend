@@ -10,17 +10,15 @@ class Home extends Component {
         // metadata is needed for stretch goals in implimenting multiple bank accounts
         trackPromise(
         api.auth.plaidAuth({token: token})
-        .then(() => {
+        .then((resp) => {
             this.getTransactions()
-        })
-        .catch(console.log));
+        }));
     };
 
     getTransactions = () => {
         trackPromise(
         api.auth.fetchTransactions()
-        .then(() => this.props.history.push('/statistics'))
-        .catch(console.log))
+        .then(() => this.props.history.push('/statistics')))
     }
 
     render() {

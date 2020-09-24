@@ -28,8 +28,15 @@ class AccountForm extends Component {
     }
 
     handleContinue = () => {
+        const passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+        if(this.state.password.match(pasw)){
         let flip = !this.state.continue
         this.setState({continue: flip})
+        }else{
+            this.setState({
+                fetchMessages: ["Password must be 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter"]
+            })
+        }
     }
     
     handleChange = event => {
