@@ -60,7 +60,7 @@ class Statistics extends Component{
                         <EditBudgets getBudgets={this.getBudgets} budgets={this.state.budgets} />
                     </Tab>
                     <Tab eventKey="tips" title="Financial Tips">
-                        <Tips  />
+                        <Tips income={this.props.user.income}/>
                     </Tab>
                 </Tabs>
             </div>
