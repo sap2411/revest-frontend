@@ -30,11 +30,12 @@ class AccountForm extends Component {
     handleContinue = () => {
         const passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
         if(this.state.password.match(passw)){
-        let flip = !this.state.continue
-        this.setState({continue: flip})
+            let flip = !this.state.continue
+            this.setState({continue: flip})
         }else{
             this.setState({
-                fetchMessages: ["Password must be 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter"]
+                fetchMessages: [...response.errors, "Password requires 6-12 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character"],
+                continue: false
             })
         }
     }
