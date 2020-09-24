@@ -219,6 +219,7 @@ const Resources = () => {
         </CardDeck>
 
     </div>
+    </div>
   );
 };
 
