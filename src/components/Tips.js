@@ -5,9 +5,8 @@ export default function Tips({income}){
     return (
         <div className="jumbotron rounded-lg col-10 py-2 mt-5 bg-white mx-auto text-left" >
             <h2 className="display-4">Notes on Saving and Planning</h2>
-            <h3>How much should you have in your savings account as an emergency fun?</h3>
-            <p>The general rule of thumb would be to have 3 months of income on hand in case of emergency.</p>
-            <p>For you, this would mean having {income*3} on hand. Once you have that emergency fund established, you can then feel more comfortable putting a higher percentage of your monthly savings into investments.</p>
+            <h3>How much should you have in your savings account as an emergency fund?</h3>
+            <p>The general rule of thumb would be to have 3 months of income on hand in case of emergency. For you, this would mean having ${income*3} on hand. Once you have that emergency fund established, you can then feel more comfortable putting a higher percentage of your monthly savings into investments.</p>
 
             <h3>Why not put it all in savings?</h3>
 
