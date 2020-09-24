@@ -157,6 +157,7 @@ const Resources = () => {
           </Card>
           <br />
         </div>
+        </div>
         <h4><u>Investment Platforms:</u></h4>
         <CardDeck>
         <Card
@@ -219,7 +220,7 @@ const Resources = () => {
         </CardDeck>
 
     </div>
-    </div>
+    
   );
 };
 
