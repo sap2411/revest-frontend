@@ -34,7 +34,7 @@ class AccountForm extends Component {
             this.setState({continue: flip})
         }else{
             this.setState({
-                fetchMessages: ["Password requires 6-12 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character"],
+                fetchMessages: ["Password requires 6-12 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character."],
             })
         }
     }
