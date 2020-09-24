@@ -28,6 +28,7 @@ class AccountForm extends Component {
     }
 
     handleContinue = () => {
+        event.preventDefault()
         const passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
         if(this.state.password.match(passw)){
             let flip = !this.state.continue
