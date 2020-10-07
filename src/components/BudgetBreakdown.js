@@ -68,7 +68,7 @@ class BudgetBreakdown extends Component{
             yearlyReturn: [...investmentData.yearlyReturn],
             ages: [...investmentData.ages],
             totalReturn: (investmentData.totalReturn.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-        })
+        },()=>{console.log(this.state)})
     }
 
     calculateInvestment = (totals) => {
