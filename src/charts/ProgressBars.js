@@ -17,7 +17,6 @@ export default function ProgressBars({ surplus, income, totals, budgets }) {
     }
 
     const leftover = (surplus < 0 ? 0 : surplus)
-
     let fixed = Math.round(calculateFixed())
     let flexible = Math.round(calculateFlexible())
     let fixedPercent = Math.round((fixed/(income*0.5))*100)

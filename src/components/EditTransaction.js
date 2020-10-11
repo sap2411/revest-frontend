@@ -49,7 +49,7 @@ export default class EditTransaction extends Component{
                         </select>{" "}
                         <button type="submit"  className="btn btn-success p">
                             <span className="d-none d-sm-none d-md-inline"> {this.state.button}</span>
-                        </button> 
+                        </button>
                     </div>
                     <div className="form-group col-sm">
                     </div>

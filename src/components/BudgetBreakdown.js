@@ -68,7 +68,7 @@ class BudgetBreakdown extends Component{
             yearlyReturn: [...investmentData.yearlyReturn],
             ages: [...investmentData.ages],
             totalReturn: (investmentData.totalReturn.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-        },()=>{console.log(this.state)})
+        })
     }
 
     calculateInvestment = (totals) => {
@@ -118,7 +118,7 @@ class BudgetBreakdown extends Component{
     }
 
     totalSpent = (totals = this.state.totals) => {
-        return Math.round(totals.reduce((acc, total) => acc + total.amount, 0))
+        return Math.round(totals.filter((budget) => budget.name !== 'Interest').reduce((acc, total) => acc + total.amount, 0))
     }
 
     render(){
