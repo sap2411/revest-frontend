@@ -56,7 +56,7 @@ class BudgetBreakdown extends Component{
     }
 
     checkIncome = (obj) => {
-        let total = Math.round(this.props.user.income-((obj.totals.reduce ((acc, spent) => acc + spent.amount, 0))))
+        let total = Math.round(this.props.user.income-((obj.totals.filter((budget) => budget.name !== 'Interest').reduce ((acc, spent) => acc + spent.amount, 0))))
         let investment = this.calculateInvestment(obj.totals)
         let excess = Math.abs(investment * -1)
         let investmentData = this.calculateReturn((excess))
